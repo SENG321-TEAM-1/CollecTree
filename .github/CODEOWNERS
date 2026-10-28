@@ -1,0 +1,23 @@
+# CODEOWNERS: GitHub automatically requests a review from these owners.
+# "Require review from Code Owners" is enabled in the ruleset, so a PR that
+# changes these paths needs approval from at least one of the listed owners.
+# Each path has two owners so that an author can always get a review from
+# the other one.
+
+# API contract and architecture: Lead Software Architect (+ Product Owner)
+/api/                    @berkeakman0 @elifarat
+/docs/architecture/      @berkeakman0 @elifarat
+/docs/adr/               @berkeakman0 @elifarat
+
+# CI/CD, Docker, and repository rules: DevOps engineer (+ Architect)
+/.github/                @CagriBaynal @berkeakman0
+/docker-compose.yml      @CagriBaynal @berkeakman0
+Dockerfile               @CagriBaynal @berkeakman0
+
+# Requirements and backlog documents: Product Owner (+ Scrum Master)
+/docs/requirements/      @elifarat @feyzasayar001
+
+# TODO: add Kemal Yusuf Ateşer (QA) and Ata Eren Atlı (Implementation)
+# when they join the organization, for example:
+# /backend/tests/        <kemal-username> @berkeakman0
+# /e2e/                  <kemal-username> @berkeakman0
