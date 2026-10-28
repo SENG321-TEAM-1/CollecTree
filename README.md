@@ -11,6 +11,7 @@ As part of our CI/CD and DevOps infrastructure, we have established the followin
 * [Feyza Sayar] - Scrum Master and Agile Process Coach
 * [Berke Akman] - Lead Software Architect and Technical Lead
 * [Kemal Yusuf Ateşer] - Quality Assurance and Test Automation Engineer
+ elifarat-patch-1
 1. Project Proposal and Problem Definition   
 
 Problem: Diecast and hobby collectors currently track their extensive collections using manual tools like Excel spreadsheets or physical notebooks. These primitive methods lack visual tracking (photos), are difficult to keep synchronized, and fail to provide real-time portfolio valuation. Furthermore, there is a lack of a dedicated, niche social platform where collectors can easily discover missing pieces and directly communicate to negotiate trades.
@@ -25,4 +26,4 @@ System Vision: To simplify and digitalize collection management while building a
 
 In Scope (System Boundaries): User authentication and profile creation, adding/removing collection items (including photos, brand, purchase cost, and current market value), automated calculation of total portfolio value, viewing other users' public collections, and a Direct Messaging (DM) system for trade negotiations.
 
-Out of Scope (System Boundaries): The system will strictly NOT process any financial transactions. Payment gateways, digital wallets, shopping carts, checkout processes, and shipping tracking are completely outside the system boundaries. All trade agreements and payments must be handled externally by the users.
+Out of Scope (System Boundaries): The system will strictly NOT process any financial transactions. Payment gateways, digital wallets, shopping carts, checkout processes, and shipping tracking are completely outside the system boundaries. All trade agreements and payments must be handled externally by the users. develop
