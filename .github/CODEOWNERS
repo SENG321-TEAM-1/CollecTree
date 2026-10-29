@@ -17,7 +17,11 @@ Dockerfile               @CagriBaynal @berkeakman0
 # Requirements and backlog documents: Product Owner (+ Scrum Master)
 /docs/requirements/      @elifarat @feyzasayar001
 
-# TODO: add Kemal Yusuf Ateşer (QA) and Ata Eren Atlı (Implementation)
-# when they join the organization, for example:
-# /backend/tests/        <kemal-username> @berkeakman0
-# /e2e/                  <kemal-username> @berkeakman0
+# Application code: Implementation engineer (+ Architect)
+/backend/                @atalirr @berkeakman0
+/frontend/               @atalirr @berkeakman0
+
+# Tests: QA engineer (+ Architect). These lines come after /backend/
+# because the last matching pattern wins.
+/backend/tests/          @kemalyusufateser @berkeakman0
+/e2e/                    @kemalyusufateser @berkeakman0
