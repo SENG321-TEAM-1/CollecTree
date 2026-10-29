@@ -134,7 +134,9 @@ Each entry is added after the meeting takes place.
 
 | Date | Attendees | Summary & Key Decisions |
 | :--- | :--- | :--- |
-| _YYYY-MM-DD_ | _names of people who attended_ | _what was done, what is next, blockers_ |
+| 2026-10-20 | All members (Elif, Feyza, Berke, Kemal, Çağrı, Ata) | Kick-off meeting. Chose the project topic (CollecTree, a portfolio and trading platform for diecast collectors) and agreed on each member's Sprint 1 role and tasks. |
+| 2026-10-21 | All members (Elif, Feyza, Berke, Kemal, Çağrı, Ata) | Created the GitHub organization and invited the team members. Reviewed the problem definition and the in-scope / out-of-scope items prepared by the Product Owner. Reviewed the first draft of the OpenAPI contract (`openapi.yaml`). |
+| 2026-10-28 | All members (Elif, Feyza, Berke, Kemal, Çağrı, Ata) | Started the pull request workflow and began uploading the Sprint 1 documents to GitHub. Made the needed repository adjustments on GitHub (branch protection, merge settings, reviews). |
 
 #### C. Impediment Tracking Log
 
