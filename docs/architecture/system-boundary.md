@@ -17,23 +17,23 @@ The system vision and the in-scope / out-of-scope list are owned by the Product 
 
 ```mermaid
 flowchart LR
-    Visitor([Visitor])
-    Collector([Collector])
+    visitor([Visitor])
+    collector([Collector])
 
-    subgraph Boundary[CollecTree]
-        System[Web App + REST API + Price Job]
+    subgraph ct [CollecTree]
+        app[Web App, REST API and Price Job]
     end
 
-    PriceSrc[(Market Price Data Source)]
-    FxSrc[(Currency Exchange Rate Source)]
+    pricesrc[(Market Price Data Source)]
+    fxsrc[(Currency Exchange Rate Source)]
 
-    Visitor -->|"browse public profiles and collections (read-only HTTPS)"| System
-    Collector -->|"profile, collection items, purchase prices, messages, offers"| System
-    System -->|"collection value, profit/loss charts, offer status, messages"| Collector
-    System -->|"scheduled price query by model name and brand"| PriceSrc
-    PriceSrc -->|"current new-in-box listing price (USD)"| System
-    System -->|"daily rate request"| FxSrc
-    FxSrc -->|"USD/TRY exchange rate"| System
+    visitor -->|browse public profiles and collections, read only| app
+    collector -->|profile, collection items, purchase prices, messages, offers| app
+    app -->|collection value, profit and loss charts, offer status, messages| collector
+    app -->|scheduled price query by model name and brand| pricesrc
+    pricesrc -->|current new in box listing price in USD| app
+    app -->|daily rate request| fxsrc
+    fxsrc -->|USD to TRY exchange rate| app
 ```
 
 ### 1.1 Relationship descriptions
