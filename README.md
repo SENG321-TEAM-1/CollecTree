@@ -197,6 +197,8 @@ Our board has five columns, so every requirement can be traced to its delivery:
 4. **In Review:** Tasks with an open pull request waiting for peer review.
 5. **Done:** Tasks merged into `develop` after review.
 
+**Board link:** [CollecTree Sprint Board](https://github.com/orgs/SENG321-TEAM-1/projects/1)
+
 #### B. Sprint 1 Stand-up Meeting Logs
 Each entry is added after the meeting takes place.
 
