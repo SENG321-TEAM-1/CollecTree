@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Status | Proposed (to be accepted by the team in Sprint 1 review) |
+| Status | Accepted (2026-11-02, Sprint 1 team review) |
 | Date | 2026-10-27 |
 | Proposed by | Berke Akman — Lead Software Architect |
 | Final approval | Product Owner, with the team |
