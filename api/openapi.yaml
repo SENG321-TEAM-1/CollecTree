@@ -541,7 +541,6 @@ components:
       properties:
         id: { type: integer }
         username: { type: string, example: berke_diecast }
-        bio: { type: string }
         itemCount: { type: integer, example: 312 }
 
     DiecastModel:
