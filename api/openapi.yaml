@@ -1,0 +1,665 @@
+openapi: 3.1.0
+info:
+  title: CollecTree API
+  version: 0.1.0
+  description: |
+    Draft API contract for Sprint 1.
+    All prices are in Turkish lira (TRY).
+    The platform does not process payments; cash amounts in offers are only information.
+
+servers:
+  - url: http://localhost:8000/api/v1
+    description: Local development server
+
+security:
+  - bearerAuth: []
+
+tags:
+  - name: Auth
+  - name: Users
+  - name: Catalog
+  - name: Collection
+  - name: Pricing
+  - name: Messaging
+  - name: Offers
+
+paths:
+  # ---------------------------------------------------------------- Auth
+  /auth/register:
+    post:
+      tags: [Auth]
+      operationId: register
+      summary: Create a new account
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/RegisterRequest' }
+      responses:
+        '201':
+          description: Account created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Token' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '409':
+          description: Username or email is already used
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+
+  /auth/login:
+    post:
+      tags: [Auth]
+      operationId: login
+      summary: Log in and receive a token
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/LoginRequest' }
+      responses:
+        '200':
+          description: Login successful
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Token' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /auth/me:
+    get:
+      tags: [Auth]
+      operationId: getMe
+      summary: Get the logged-in user
+      responses:
+        '200':
+          description: Current user
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/User' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  # ---------------------------------------------------------------- Users
+  /users/{username}:
+    get:
+      tags: [Users]
+      operationId: getUserProfile
+      summary: Get a collector's public profile
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/Username'
+      responses:
+        '200':
+          description: Public profile
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/User' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  # ---------------------------------------------------------------- Catalog
+  /models:
+    get:
+      tags: [Catalog]
+      operationId: searchModels
+      summary: Search diecast models in the shared catalogue
+      security: []
+      parameters:
+        - name: q
+          in: query
+          description: Part of the model name, for example "skyline"
+          schema: { type: string }
+        - $ref: '#/components/parameters/Brand'
+        - $ref: '#/components/parameters/Scale'
+        - $ref: '#/components/parameters/Series'
+      responses:
+        '200':
+          description: Matching models
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/DiecastModel' }
+
+  # ---------------------------------------------------------------- Pricing
+  /models/{modelId}/prices:
+    get:
+      tags: [Pricing]
+      operationId: getPriceHistory
+      summary: Get the market price history of a model
+      description: Prices are collected once a day by a background job from an external price source.
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/ModelId'
+      responses:
+        '200':
+          description: Prices ordered from oldest to newest
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/PricePoint' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /me/portfolio:
+    get:
+      tags: [Pricing]
+      operationId: getMyPortfolio
+      summary: Get the total value and profit or loss of my collection
+      responses:
+        '200':
+          description: Portfolio summary
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Portfolio' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  /me/portfolio/history:
+    get:
+      tags: [Pricing]
+      operationId: getMyPortfolioHistory
+      summary: Get daily values of my collection for the profit and loss chart
+      parameters:
+        - name: from
+          in: query
+          description: First day of the chart
+          schema: { type: string, format: date }
+        - name: to
+          in: query
+          description: Last day of the chart
+          schema: { type: string, format: date }
+      responses:
+        '200':
+          description: One point per day, from oldest to newest
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/PortfolioPoint' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+
+  # ---------------------------------------------------------------- Collection
+  /users/{username}/items:
+    get:
+      tags: [Collection]
+      operationId: listUserItems
+      summary: List the items in a collector's collection
+      description: Anyone can see a collection. Purchase prices are shown only to the owner.
+      security: []
+      parameters:
+        - $ref: '#/components/parameters/Username'
+        - $ref: '#/components/parameters/Brand'
+        - $ref: '#/components/parameters/Scale'
+        - $ref: '#/components/parameters/Series'
+      responses:
+        '200':
+          description: Collection items
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/CollectionItem' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /items:
+    post:
+      tags: [Collection]
+      operationId: addItem
+      summary: Add a model to my collection
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NewCollectionItem' }
+            example:
+              modelId: 1042
+              purchasePrice: 450.00
+              purchaseDate: '2026-09-14'
+              openForTrade: true
+      responses:
+        '201':
+          description: Item added
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CollectionItem' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  /items/{itemId}:
+    delete:
+      tags: [Collection]
+      operationId: deleteItem
+      summary: Remove an item from my collection
+      parameters:
+        - $ref: '#/components/parameters/ItemId'
+      responses:
+        '204':
+          description: Item removed
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409':
+          description: The item is part of a pending offer and cannot be removed
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+
+  # ---------------------------------------------------------------- Messaging
+  /conversations:
+    get:
+      tags: [Messaging]
+      operationId: listConversations
+      summary: List my conversations
+      responses:
+        '200':
+          description: My conversations
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Conversation' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      tags: [Messaging]
+      operationId: startConversation
+      summary: Start a conversation with another collector
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [username]
+              properties:
+                username: { type: string, example: ata_minigt }
+      responses:
+        '201':
+          description: Conversation created
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Conversation' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409':
+          description: A conversation with this user already exists
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+
+  /conversations/{conversationId}/messages:
+    parameters:
+      - $ref: '#/components/parameters/ConversationId'
+    get:
+      tags: [Messaging]
+      operationId: listMessages
+      summary: Read the messages in a conversation
+      responses:
+        '200':
+          description: Messages from oldest to newest
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Message' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+    post:
+      tags: [Messaging]
+      operationId: sendMessage
+      summary: Send a message
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [text]
+              properties:
+                text: { type: string, minLength: 1, maxLength: 1000 }
+      responses:
+        '201':
+          description: Message sent
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Message' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+
+  # ---------------------------------------------------------------- Offers
+  /offers:
+    get:
+      tags: [Offers]
+      operationId: listMyOffers
+      summary: List offers I sent or received
+      responses:
+        '200':
+          description: My offers
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Offer' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+    post:
+      tags: [Offers]
+      operationId: createOffer
+      summary: Make an offer for another collector's item
+      description: |
+        An offer can contain items, cash, or both.
+        It must contain at least one item or a cash amount greater than zero.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/NewOffer' }
+            examples:
+              cashOnly:
+                summary: 600 TL cash
+                value:
+                  targetItemId: 5521
+                  cashAmount: 600
+              itemPlusCash:
+                summary: One of my items plus 150 TL
+                value:
+                  targetItemId: 5521
+                  offeredItemIds: [7310]
+                  cashAmount: 150
+      responses:
+        '201':
+          description: Offer created with status PENDING
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Offer' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403':
+          description: The target item is my own item, or an offered item does not belong to me
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409':
+          description: The target item is not open for trade
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+              example:
+                title: Item not open for trade
+                status: 409
+                code: ITEM_NOT_OPEN_FOR_TRADE
+
+  /offers/{offerId}:
+    patch:
+      tags: [Offers]
+      operationId: updateOfferStatus
+      summary: Accept, reject, or withdraw an offer
+      description: |
+        Only a PENDING offer can be changed.
+        The receiver can set ACCEPTED or REJECTED. The sender can set WITHDRAWN.
+        Accepting does not move items or money. The two users complete the exchange themselves.
+      parameters:
+        - $ref: '#/components/parameters/OfferId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [status]
+              properties:
+                status:
+                  type: string
+                  enum: [ACCEPTED, REJECTED, WITHDRAWN]
+      responses:
+        '200':
+          description: Offer updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Offer' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409':
+          description: The offer is no longer PENDING
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+              example:
+                title: Offer is not pending
+                status: 409
+                code: OFFER_NOT_PENDING
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  parameters:
+    Username:
+      name: username
+      in: path
+      required: true
+      schema: { type: string }
+    ModelId:
+      name: modelId
+      in: path
+      required: true
+      schema: { type: integer }
+    ItemId:
+      name: itemId
+      in: path
+      required: true
+      schema: { type: integer }
+    ConversationId:
+      name: conversationId
+      in: path
+      required: true
+      schema: { type: integer }
+    OfferId:
+      name: offerId
+      in: path
+      required: true
+      schema: { type: integer }
+    Brand:
+      name: brand
+      in: query
+      schema: { type: string, example: Hot Wheels }
+    Scale:
+      name: scale
+      in: query
+      schema: { type: string, example: '1:64' }
+    Series:
+      name: series
+      in: query
+      schema: { type: string, example: Super Treasure Hunt }
+
+  responses:
+    BadRequest:
+      description: Invalid input
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    Unauthorized:
+      description: Missing or invalid token, or wrong email or password
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    Forbidden:
+      description: You are not allowed to do this
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+    NotFound:
+      description: Resource not found
+      content:
+        application/problem+json:
+          schema: { $ref: '#/components/schemas/Problem' }
+
+  schemas:
+    Problem:
+      type: object
+      required: [title, status, code]
+      properties:
+        title: { type: string }
+        status: { type: integer }
+        code: { type: string, example: VALIDATION_ERROR }
+        detail: { type: string }
+
+    RegisterRequest:
+      type: object
+      required: [username, email, password]
+      properties:
+        username: { type: string, minLength: 3, maxLength: 30, example: berke_diecast }
+        email: { type: string, format: email }
+        password: { type: string, minLength: 8 }
+
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email: { type: string, format: email }
+        password: { type: string }
+
+    Token:
+      type: object
+      required: [accessToken]
+      properties:
+        accessToken: { type: string }
+
+    User:
+      type: object
+      required: [id, username]
+      properties:
+        id: { type: integer }
+        username: { type: string, example: berke_diecast }
+        bio: { type: string }
+        itemCount: { type: integer, example: 312 }
+
+    DiecastModel:
+      type: object
+      required: [id, name, brand, scale]
+      properties:
+        id: { type: integer, example: 1042 }
+        name: { type: string, example: Nissan Skyline GT-R R34 }
+        brand: { type: string, example: MiniGT }
+        scale: { type: string, example: '1:64' }
+        series: { type: string, example: Super Treasure Hunt }
+        currentPrice:
+          type: number
+          description: Latest new-in-box market price in TRY
+          example: 570.50
+
+    PricePoint:
+      type: object
+      required: [date, price]
+      properties:
+        date: { type: string, format: date }
+        price: { type: number, example: 570.50 }
+
+    NewCollectionItem:
+      type: object
+      required: [modelId, purchasePrice, purchaseDate]
+      properties:
+        modelId: { type: integer }
+        purchasePrice: { type: number, minimum: 0 }
+        purchaseDate: { type: string, format: date }
+        openForTrade: { type: boolean, default: false }
+
+    CollectionItem:
+      type: object
+      required: [id, owner, model, openForTrade]
+      properties:
+        id: { type: integer, example: 5521 }
+        owner: { type: string, example: berke_diecast }
+        model: { $ref: '#/components/schemas/DiecastModel' }
+        openForTrade: { type: boolean }
+        purchasePrice:
+          type: number
+          description: Only returned to the owner
+        purchaseDate:
+          type: string
+          format: date
+          description: Only returned to the owner
+
+    Portfolio:
+      type: object
+      description: |
+        If a model has no market price yet, its purchase price is used as its current value,
+        so it adds zero profit or loss until the first price arrives.
+      required: [itemCount, totalPurchasePrice, totalCurrentValue, profitLoss]
+      properties:
+        itemCount: { type: integer, example: 312 }
+        totalPurchasePrice: { type: number, example: 26150.00 }
+        totalCurrentValue: { type: number, example: 30970.75 }
+        profitLoss:
+          type: number
+          description: totalCurrentValue minus totalPurchasePrice
+          example: 4820.75
+
+    PortfolioPoint:
+      type: object
+      required: [date, totalPurchasePrice, totalCurrentValue]
+      properties:
+        date: { type: string, format: date }
+        totalPurchasePrice:
+          type: number
+          description: What I had paid for the items I owned on that day
+        totalCurrentValue:
+          type: number
+          description: Market value of those items on that day
+
+    Conversation:
+      type: object
+      required: [id, otherUser]
+      properties:
+        id: { type: integer }
+        otherUser: { type: string, example: ata_minigt }
+        lastMessage: { type: string }
+
+    Message:
+      type: object
+      required: [id, sender, text, sentAt]
+      properties:
+        id: { type: integer }
+        sender: { type: string }
+        text: { type: string }
+        sentAt: { type: string, format: date-time }
+
+    NewOffer:
+      type: object
+      required: [targetItemId]
+      properties:
+        targetItemId:
+          type: integer
+          description: The item I want to get
+        offeredItemIds:
+          type: array
+          description: My items I give in exchange (optional)
+          items: { type: integer }
+        cashAmount:
+          type: number
+          description: Cash I add in TRY (optional)
+          minimum: 0
+
+    Offer:
+      allOf:
+        - $ref: '#/components/schemas/NewOffer'
+        - type: object
+          required: [id, sender, receiver, status, createdAt]
+          properties:
+            id: { type: integer, example: 311 }
+            sender: { type: string }
+            receiver: { type: string }
+            status:
+              type: string
+              enum: [PENDING, ACCEPTED, REJECTED, WITHDRAWN]
+            createdAt: { type: string, format: date-time }
