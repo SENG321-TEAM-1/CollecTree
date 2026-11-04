@@ -13,4 +13,4 @@ Closes #
 
 - [ ] Matches `api/openapi.yaml` (or the YAML is updated in this PR)
 - [ ] No secrets or `.env` files committed
-- [ ] Branch name follows `feature/US-<id>-<short-name>`
+- [ ] Branch name follows `docs/code-review-guidelines.md` (for example `feature/13-openapi-draft` or `docs/19-architecture-docs`)
