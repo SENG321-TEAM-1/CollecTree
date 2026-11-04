@@ -29,8 +29,11 @@
 | Feature | `feature/<issue>-<short-name>` | `feature/13-openapi-draft` |
 | Bug fix | `fix/<issue>-<short-name>` | `fix/41-wrong-profit-sign` |
 | Docs | `docs/<issue>-<short-name>` or `docs/<short-name>` | `docs/19-architecture-docs` |
+| Chore (branch sync, repository upkeep) | `chore/<short-name>` | `chore/sync-main-into-develop` |
 
 Commit messages are short and in the imperative: `Add offer status endpoint`, `Fix portfolio total when no price exists`.
+
+Every sprint release on `main` gets a tag and a GitHub release with the list of deliverables. Tags follow `v0.<sprint>.0-sprint<sprint>`: `v0.1.0-sprint1`, `v0.2.0-sprint2`, `v0.3.0-sprint3`. The final submission is tagged `v1.0.0`.
 
 ## 3 Reviewer checklist
 
