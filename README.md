@@ -207,6 +207,7 @@ Each entry is added after the meeting takes place.
 | 2026-10-20 | All members (Elif, Feyza, Berke, Kemal, Çağrı, Ata) | Kick-off meeting. Chose the project topic (CollecTree, a portfolio and trading platform for diecast collectors) and agreed on each member's Sprint 1 role and tasks. |
 | 2026-10-21 | All members (Elif, Feyza, Berke, Kemal, Çağrı, Ata) | Created the GitHub organization and invited the team members. Reviewed the problem definition and the in-scope / out-of-scope items prepared by the Product Owner. Reviewed the first draft of the OpenAPI contract (`openapi.yaml`). |
 | 2026-10-28 | All members (Elif, Feyza, Berke, Kemal, Çağrı, Ata) | Started the pull request workflow and began uploading the Sprint 1 documents to GitHub. Made the needed repository adjustments on GitHub (branch protection, merge settings, reviews). |
+| 2026-11-04 | All members (Elif, Feyza, Berke, Kemal, Çağrı, Ata) | Final Sprint 1 stand-up and retrospective. Reviewed the work since 28 October: the QA review of all user stories (#31) and the Product Owner's updates, the accepted ADRs (#35), the project board link (#36), the consistency fixes (#40), and the Sprint 1 release `v0.1.0-sprint1` (#39). Confirmed the Sprint 1 submission document. No open impediments. |
 
 #### C. Impediment Tracking Log
 
@@ -216,6 +217,38 @@ Each entry is added after the meeting takes place.
 | **IMP-02** | Direct pushes to `main`/`develop` could break the shared branches | GitHub & DevOps | DevOps added a ruleset that requires a pull request, one approval, and a passing `validate-openapi` check. | Resolved |
 | **IMP-03** | Squash-only merging caused false conflicts when syncing `main` and `develop` | GitHub & DevOps | Merge commits were enabled; the merge method rule was added to the code review guidelines. | Resolved |
 | **IMP-04** | Two team members had not joined the GitHub organization yet | Team & Traceability | All six members joined the organization with write access, so everyone can be assigned issues and reviews. | Resolved |
+| **IMP-05** | A false README conflict blocked the `develop` → `main` release pull request | GitHub & DevOps | The Lead Architect merged `main` into `develop` with a merge commit (#38), which removed the conflict without changing any file. | Resolved |
 
 #### D. Sprint 1 Retrospective Summary
-To be completed after the Sprint 1 retrospective meeting (before the 5 November 2026 deadline).
+**Date:** 2026-11-04 · **Attendees:** all six members (Elif, Feyza, Berke, Kemal, Çağrı, Ata)
+
+**What went well**
+- After the ruleset was set up (from #9 on), every change went through a reviewed pull request. Reviews found real problems, such as stories that did not match the API and contradictions in the system boundary (#40).
+- The collector survey (27 responses) and the competitor review gave the proposal real evidence and showed that collectors with larger collections are the primary users.
+- The QA review (#31) made every acceptance criterion testable and linked it to the status codes in `api/openapi.yaml`.
+- Every deliverable had one accountable owner in the RACI matrix, so everyone knew who decides.
+
+**What did not go well**
+- The first pull requests (#2, #9, #10) had no linked issue and used default branch names, because the rules were written after them.
+- Squash merges between `main` and `develop` caused false conflicts twice (IMP-03 and IMP-05).
+- Two members joined the GitHub organization late (IMP-04), so their first contributions started late.
+- Most reviews and fixes happened in the last week of the sprint.
+- The first user stories did not match the README scope and the API, and some acceptance criteria could not be tested.
+- Long texts pasted into GitHub were cut off (the release notes had to be fixed after publishing).
+
+**Action items for Sprint 2**
+
+| Action | Owner |
+| :--- | :--- |
+| Every task starts with an issue and a branch named after it; checked in each stand-up | Feyza |
+| `develop` → `main` and `main` → `develop` always use **Create a merge commit** | Çağrı |
+| New user stories go to QA review as soon as they are written | Elif, Kemal |
+| Reviews are done within two working days, as the code review guidelines say | All members |
+| Sprint 2 work is planned so that it starts in the first week | Feyza |
+| The price source spike (assumption AS-1) is done at the start of Sprint 2 | Berke |
+| Every member opens at least one pull request in Sprint 2 | All members |
+| Pasted text is checked in the preview before it is published | All members |
+
+**Sprint 1 rating (team vote):** 5 / 5
+
+**Next meeting:** 2026-11-13, 18:00

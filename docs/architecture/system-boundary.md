@@ -42,7 +42,7 @@ flowchart LR
 |---|---|---|---|---|
 | Visitor | Platform | Public profile and collection requests | Discover collectors before signing up | Unauthenticated; read-only access to public data only |
 | Collector | Platform | Account data, collection items, purchase prices, messages, offers | Manage portfolio and trade | Authenticated by JWT; users may modify only their own data |
-| Platform | Collector | Valuation, charts, conversations, offer status | Show portfolio value and trade progress | Purchase prices are private to the owner unless shared |
+| Platform | Collector | Valuation, charts, conversations, offer status | Show portfolio value and trade progress | Purchase prices are private to the owner and never shown to other users |
 | Platform | Market price source | Model search query | Find the current market price | External data may be missing or wrong; the platform stores source and timestamp with each price |
 | Platform | Exchange rate source | Rate request | Convert USD prices to TRY | If unavailable, the last known rate is used and marked as stale |
 
@@ -64,7 +64,7 @@ flowchart LR
 | Quality | At least 50 percent unit-test coverage, enforced in GitHub Actions; SonarQube analysis in the final submission. |
 | Team | Six third-year students without prior project experience; technology choices favor simplicity (see `docs/adr/`). |
 | Legal | The platform must respect the terms of use of external price sources and must not store payment data. |
-| Privacy | Personal data is limited to username, email, password hash, and optional profile information. |
+| Privacy | Personal data is limited to username, email, and password hash. |
 
 ## 4 Risks
 
