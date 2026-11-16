@@ -51,7 +51,7 @@ classDiagram
         +Decimal priceUsd
         +Decimal priceTry
         +String source
-        +String listingUrl
+        +Integer sampleSize
         +DateTime fetchedAt
     }
 
@@ -91,7 +91,7 @@ classDiagram
     User "1" --> "0..*" CollectionItem : owns
     CollectionItem "0..*" --> "1" DiecastModel : is a copy of
     PriceSnapshot "0..*" --> "1" DiecastModel : prices
-    PriceSnapshot "0..*" --> "1" ExchangeRate : converted with
+    PriceSnapshot "0..*" --> "0..1" ExchangeRate : converted with
     Conversation "0..*" --> "2" User : between
     Conversation "1" *-- "0..*" Message : contains
     Message "0..*" --> "1" User : sent by
@@ -127,7 +127,7 @@ erDiagram
     users ||--o{ collection_items : owns
     diecast_models ||--o{ collection_items : "is copy of"
     diecast_models ||--o{ price_snapshots : "has daily price"
-    exchange_rates ||--o{ price_snapshots : converts
+    exchange_rates |o--o{ price_snapshots : converts
     users ||--o{ conversations : "user_a"
     users ||--o{ conversations : "user_b"
     conversations ||--o{ messages : contains
@@ -171,11 +171,11 @@ erDiagram
         int id PK
         int model_id FK
         date price_date "unique with model_id"
-        numeric price_usd "12,2"
+        numeric price_usd "12,2, null for seed prices"
         numeric price_try "12,2"
-        date rate_date FK
-        varchar source "for example ebay or mock"
-        varchar listing_url "nullable"
+        date rate_date FK "null for seed prices"
+        varchar source "ebay, seed, or mock"
+        int sample_size "number of listings in the median, null for seed prices"
         timestamptz fetched_at
     }
 
@@ -237,7 +237,8 @@ erDiagram
 |---|---|---|
 | **Soft delete for collection items** (`removed_at`) | The profit and loss chart (`GET /me/portfolio/history`) must show what the user owned on each past day. If removed items were deleted, past points of the chart would change. Offers that point to a removed item also stay readable. | Hard delete: simpler, but breaks the history chart and offer history |
 | **Portfolio is calculated, not stored** | The values come directly from `collection_items` and `price_snapshots`, so they can never get out of sync. The expected data size (hundreds of items per user) is small. | A daily `portfolio_snapshots` table: faster, but one more job that can fail; can be added later if needed |
-| **Price stored in both USD and TRY** with the rate date | The price source returns USD (system boundary). Keeping both values shows exactly how each TRY price was calculated. | Storing TRY only: loses the original value when a rate is wrong |
+| **Price stored in both USD and TRY** with the rate date | The price source returns USD (system boundary). Keeping both values shows exactly how each TRY price was calculated. Seed prices are collected in TRY, so their USD value and rate date are empty. | Storing TRY only: loses the original value when a rate is wrong |
+| **No eBay listing, seller, or user data is stored** | Only one calculated median price per model per day and the number of listings it was calculated from (`sample_size`) are stored. This keeps the data small and lets the team truthfully apply for eBay's "Not persisting eBay data" exemption from account deletion notifications. `sample_size` shows how reliable a price is. | Storing each listing URL or listing: more eBay data to protect and delete, no use for a median price |
 | **Brand, scale, and series as text columns** | Matches the OpenAPI `DiecastModel` schema and the seed data. Filters work with a simple `WHERE`. | Separate `brands`, `scales`, `series` tables: cleaner, but more joins and seed files for no first-release benefit |
 | **`receiver_id` stored on the offer** | The receiver is the owner of the target item when the offer is created. Storing it keeps "offers I received" correct and fast. | Reading it through the target item every time |
 | **Conversation pair ordered by user id** | A database constraint, not only application code, prevents two conversations between the same users. | Checking in code only: fails under concurrent requests |
@@ -314,4 +315,4 @@ All four end states are final. An ended offer cannot be reopened; the sender cre
 | OQ-1 | When an offer is accepted, what happens to the other `PENDING` offers for the same items? | They become `CANCELLED`, because the trade has happened (BR-16, BR-17). | Decided 2026-11-14 |
 | OQ-2 | The API has no endpoint to change an item (for example to set `openForTrade` or correct a price). | `PATCH /items/{itemId}` is added to `api/openapi.yaml` (BR-18, BR-19). | Decided 2026-11-14 |
 | OQ-3 | Should a user see an offer's target item after the owner removes it? | Yes, as read-only history; this is why items are soft deleted. | Proposed |
-| OQ-4 | Which price source do we use? | Decided after the price source spike (AS-1); recorded as ADR-003. | Open |
+| OQ-4 | Which price source do we use? | Proposed: eBay Browse API for daily prices, TCMB for the USD to TRY rate, manually collected seed prices as fallback. Confirmed by the price source spike (AS-1) and recorded as ADR-003. | Proposed |
