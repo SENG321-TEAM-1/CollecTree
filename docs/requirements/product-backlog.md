@@ -1,4 +1,4 @@
-# Initial Product Backlog
+<img width="1916" height="1077" alt="image" src="https://github.com/user-attachments/assets/d74a956e-82c3-4c1d-adff-12897cfdef6a" /># Initial Product Backlog
 
 This document summarizes the CollecTree Product Backlog for the first release. The backlog itself lives in GitHub Issues and on the [CollecTree Sprint Board](https://github.com/orgs/SENG321-TEAM-1/projects/1); this page shows all items in one place with their priorities, estimates, dependencies, and owners. The Product Owner (Elif) is accountable for the backlog (RACI row 6.1).
 
@@ -38,12 +38,14 @@ Priority 1 is the highest. Stories are estimated in story points (SP) on the Fib
 | 1 | US-06 | [#21](https://github.com/SENG321-TEAM-1/CollecTree/issues/21) User Login | F-01 | 3 | Requires US-01 to be completed first. | Çağrı |
 | 2 | US-02 | [#5](https://github.com/SENG321-TEAM-1/CollecTree/issues/5) Add Collection Item | F-02 | 5 | Requires US-01 to be completed first. | Ata |
 | 2 | US-07 | [#22](https://github.com/SENG321-TEAM-1/CollecTree/issues/22) Remove Collection Item | F-02 | 2 | Requires US-02 (so there are items to remove). The pending-offer rule depends on US-09 (Offers). | Feyza |
+| 2 | US-10 | [#107](https://github.com/SENG321-TEAM-1/CollecTree/issues/107) Edit Collection Item | F-02 | 3 | Requires US-02 (so there are items to edit). The pending-offer rule depends on US-09 (Offers). | Elif |
 | 3 | US-08 | [#23](https://github.com/SENG321-TEAM-1/CollecTree/issues/23) Automatic Market Price Tracking | F-03 | 8 | Requires the model catalogue (seed data). Access to a real price source will be tested in a Sprint 2 spike (assumption AS-1); until then a mock price provider is used. | Berke |
 | 3 | US-03 | [#6](https://github.com/SENG321-TEAM-1/CollecTree/issues/6) Portfolio Statistics | F-04 | 3 | Requires US-02 (so there is data to calculate) and US-08 (so market prices are available). | Elif |
 | 4 | US-04 | [#7](https://github.com/SENG321-TEAM-1/CollecTree/issues/7) Social Discovery | F-05 | 5 | Requires US-02 (so there are items to show). | Çağrı |
 | 5 | US-05 | [#8](https://github.com/SENG321-TEAM-1/CollecTree/issues/8) Direct Messaging for Trades | F-06 | 8 | Requires US-01 (for user accounts) and US-04 (to discover profiles to message). | Kemal |
 | 5 | US-09 | [#24](https://github.com/SENG321-TEAM-1/CollecTree/issues/24) Trade and Cash Offers | F-06 | 8 | Requires US-02 (items must exist) and US-04 (to find items of other collectors). | Ata |
-| [#107](https://github.com/SENG321-TEAM-1/CollecTree/issues/107) US-10 | Edit Collection Item | Priority 2 | F-02 | 3 | US-02, US-09 | Elif |
+
+
 
 ## 4 Tasks
 
