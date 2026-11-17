@@ -35,14 +35,15 @@
 | Non-functional requirements and quality measures | Kemal | To be added |
 | Figma prototypes and user flows | Ata | To be added |
 | C4 and UML architecture document | Berke | #92/#93, #97/#98, #99/#100, #101/#102, #103/#104, #105/#106 |
-| Price source spike | Berke | #96 |
-| CI and repository security | Çağrı | #94/#95 |
-| Process records and submission | Feyza | #113 |
+| Price source spike | Berke | #96/#117 |
+| CI, deployment decisions, and repository security | Çağrı | #94/#95, #114, #115/#116 |
+| Process records and submission | Feyza | #113/#118 |
 
 **Decisions taken during planning**
 - Market prices come from the eBay Browse API, exchange rates from TCMB, with hand-collected seed prices as the fallback. Automated collection from Turkish listing sites was rejected because their terms of use forbid it (ADR-003).
 - When an offer is accepted, the other pending offers with the same items are cancelled and the items are closed for trade (BR-16, BR-17).
 - A new endpoint `PATCH /items/{itemId}` lets owners edit their items (US-10).
+- The Docker Compose setup was agreed in #114: PostgreSQL 16, a FastAPI backend, and an nginx frontend that forwards `/api` to the backend.
 - All repository content and the user interface are in English.
 - Ata creates the shared Figma file for the prototypes.
 
@@ -55,9 +56,10 @@
 ## 4 Impediment Log
 | ID | Date | Impediment | Owner | Action | Status |
 |---|---|---|---|---|---|
-| IMP-01 | 2026-11-16 | The eBay developer account is waiting for approval, so the price source spike cannot start. | Berke | The seed price provider is ready as a fallback; the spike starts when the account is approved. | Open |
+| IMP-01 | 2026-11-16 | The eBay developer account is waiting for approval, so the price source spike cannot start. | Berke | The seed price provider was ready as a fallback. Resolved on 2026-11-17: the account was approved and the spike was completed (#96, PR #117). | Closed |
 | IMP-02 | 2026-11-16 | Four architecture pull requests (#93, #98, #100, #102) needed the Product Owner review required by CODEOWNERS, while the Product Owner also writes the SRS. | Elif | Review order agreed in the kick-off. Resolved on 2026-11-16: Elif approved all four. | Closed |
-| IMP-03 | 2026-11-16 | Sprint 2 work had not started for most members two days after the sprint start. | Feyza | Kick-off meeting, a personal task list for every member, and daily written stand-ups. | Open |
+| IMP-03 | 2026-11-16 | Sprint 2 work had not started for most members two days after the sprint start. | Feyza | Kick-off meeting, a personal task list for every member, and daily written stand-ups. On 2026-11-17 Elif, Feyza, Berke, and Çağrı are working; Kemal and Ata have not started yet. | Open |
+| Feyza | Kick-off meeting, a personal task list for every member, and daily written stand-ups. | Open |
 
 ## 5 Sprint 2 Review and Retrospective
 To be filled on 2026-11-23: what was delivered, what was not, what went well, and what to improve in Sprint 3, with owners.
