@@ -114,9 +114,9 @@ The architect read the storage and data clauses of the current eBay API License 
 
 **Result: no clause forbids storing a daily median calculated by the application.** To stay clearly inside the agreement, ADR-003 adds one constraint:
 
-> **Prices derived from eBay are used only inside CollecTree.** They are shown to users in the CollecTree web app. They are not exported, not offered for bulk download, not sold or passed to third parties as a data feed, and not used to train AI models. The CollecTree REST API serves its own web app and returns prices only one model or one collection at a time.
+> **Prices derived from eBay are used only inside CollecTree.** They are shown to users in the CollecTree web app. They are not exported, not offered for bulk download, not sold or passed to third parties as a data feed, and not used to train AI models. The CollecTree REST API serves its own web app and has no export or bulk endpoint.
 
-The price history endpoint already returns the history of one model per request, and the API has no export or bulk endpoint, so the current API contract meets this constraint.
+The API contract has no export endpoint, and the price history endpoint returns one model per request. The catalogue search (`searchModels`), however, has no paging yet, so one request could return the whole catalogue with its prices. **Follow-up:** add paging with a maximum page size to `searchModels` and `listUserItems` in `api/openapi.yaml`.
 
 ## 6 Data stored from eBay
 
@@ -128,6 +128,7 @@ Unchanged from the domain model: one median price per model per day and the numb
 2. **Update the documents** so that they describe the same rule:
    - ADR-003: the rule, the consistency check, the usage constraint, and the validation results.
    - System boundary: the usage constraint in the list of constraints.
+   - OpenAPI: paging with a maximum page size for `searchModels` and `listUserItems`.
    - Domain model: a catalogue model is one specific release; the syntax of `search_keyword`.
    - C4 model and the price job sequence diagram: "at least 5 listings **and** p75/p25 ≤ 2.0".
    - System boundary and architecture overview: the mitigation of risk R-2.
