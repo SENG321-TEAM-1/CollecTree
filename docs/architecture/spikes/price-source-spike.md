@@ -14,7 +14,7 @@
 
 The eBay Browse API can supply consistent daily market prices for diecast models, **but only if every catalogue model is one specific release and its search keyword identifies that release**. With generic keywords such as "mini gt porsche 911 gt3 rs", the results mix several releases, chase cars, and lots, and only 5 of 10 test models had a plausible median. With release-specific keywords, a title match rule, and a consistency check, **all 10 test models gave a consistent and plausible median**.
 
-Three of the four acceptance conditions of ADR-003 are met. The fourth, the licence check, is partly confirmed and has one open point (section 5.4).
+All four acceptance conditions of ADR-003 are met. The licence check adds one usage constraint: prices derived from eBay are used only inside CollecTree and are never exported, downloaded in bulk, or offered as a data feed (section 5.4).
 
 ## 2 Set-up
 
@@ -102,9 +102,21 @@ The Developer Analytics API reports **5,000 Browse API calls per 24 hours** for 
 
 ### 5.4 Licence
 
-The eBay API License Agreement allows intermediate copies of eBay content only as needed for a permitted use, and requires displayed eBay content to be refreshed at least every 24 hours (item listing data every 6 hours). CollecTree displays no listing data and refreshes the current market price every 24 hours.
+The architect read the storage and data clauses of the current eBay API License Agreement in the developer portal on 2026-11-17 (the page is not readable without signing in).
 
-**Open point:** whether the stored **history of daily medians** (used for the price history and the portfolio chart) counts as stored eBay content. A median is a statistic calculated by CollecTree, not a copy of a listing, and no clause found so far forbids it. The full current agreement is only readable after signing in to the eBay developer portal; the architect checks the storage clauses there before ADR-003 is accepted. If the history is not allowed, the price history keeps only seed prices and the current eBay price.
+| Clause | What it says | Effect on CollecTree |
+|---|---|---|
+| Definition of eBay Content | All information, data, content, and images stored by and retrieved from eBay | The listing prices read by the price job are eBay Content. CollecTree keeps only a median calculated from them, never the listings. |
+| User IDs and passwords | Never collect, store, or share eBay user IDs or passwords | Not affected: CollecTree uses an application token and has no eBay user sign-in. |
+| Prohibited aggregated data | Aggregated seller or buyer data, seller performance data, and aggregated data about transactions through third-party affiliates | Not affected: the median is a price of a model, not data about sellers, buyers, or transactions. |
+| Displaying aggregated content | No framing or mirroring of pages served by eBay | Not affected: no eBay page is shown. |
+| Restricted APIs | APIs that provide information about market trends, pricing strategies, sales volumes, or user behaviour. Their data, raw or aggregated, may not be distributed electronically through an API or downloaded in bulk | The Browse API returns active listings, but a price derived from it could be read as pricing information. CollecTree therefore follows this rule in any case (constraint below). |
+
+**Result: no clause forbids storing a daily median calculated by the application.** To stay clearly inside the agreement, ADR-003 adds one constraint:
+
+> **Prices derived from eBay are used only inside CollecTree.** They are shown to users in the CollecTree web app. They are not exported, not offered for bulk download, not sold or passed to third parties as a data feed, and not used to train AI models. The CollecTree REST API serves its own web app and returns prices only one model or one collection at a time.
+
+The price history endpoint already returns the history of one model per request, and the API has no export or bulk endpoint, so the current API contract meets this constraint.
 
 ## 6 Data stored from eBay
 
@@ -112,9 +124,10 @@ Unchanged from the domain model: one median price per model per day and the numb
 
 ## 7 Recommendation
 
-1. **Accept ADR-003** with the matching rule of section 4.1, after the licence point of section 5.4 is confirmed.
+1. **Accept ADR-003** with the matching rule of section 4.1 and the usage constraint of section 5.4.
 2. **Update the documents** so that they describe the same rule:
-   - ADR-003: the rule and the consistency check, and the validation results.
+   - ADR-003: the rule, the consistency check, the usage constraint, and the validation results.
+   - System boundary: the usage constraint in the list of constraints.
    - Domain model: a catalogue model is one specific release; the syntax of `search_keyword`.
    - C4 model and the price job sequence diagram: "at least 5 listings **and** p75/p25 ≤ 2.0".
    - System boundary and architecture overview: the mitigation of risk R-2.
