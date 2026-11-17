@@ -4,12 +4,13 @@
 |---|---|
 | Project | CollecTree |
 | Course | BM 321 / SENG 321 Software Engineering — Sprint 2 |
-| Version | 0.2.0 (draft) |
+| Version | 0.2.0 |
 | Owner (Accountable) | Berke Akman — Lead Software Architect |
 | Responsible for the Docker setup | Çağrı Baynal — DevOps and CI/CD Infrastructure Engineer |
+| Decisions | Docker Compose decisions by the DevOps engineer: [#114](https://github.com/SENG321-TEAM-1/CollecTree/issues/114) (2026-11-17) |
 | Sources | [C4 model](c4-model.md), Level 2; [ADR-001](../adr/ADR-001-architecture-style-and-technology-stack.md); [`.env.example`](../../.env.example) |
 
-> **Status:** draft. The values below are the architect's proposals. They are confirmed or changed by the DevOps engineer's Docker Compose decisions, and this document is updated in the same sprint.
+> **Status:** agreed. The architect proposed the values below, and the DevOps engineer confirmed all of them in the Docker Compose decisions issue [#114](https://github.com/SENG321-TEAM-1/CollecTree/issues/114). The Docker files that implement them are written in Sprint 3.
 
 The whole system runs on **one machine with Docker** and starts with **one command** (course requirement, constraint in the [system boundary](system-boundary.md)). The same setup is used for development, for the demo, and for the jury.
 
@@ -124,11 +125,13 @@ These commands are what the team shows in the demo ("deployment, data handling, 
 
 ---
 
-## 6 Open points for the DevOps engineer
+## 6 Decisions
 
-These points are decided in the Docker Compose decisions issue and then written back into this document:
+The DevOps engineer decided the open points of the draft in [#114](https://github.com/SENG321-TEAM-1/CollecTree/issues/114) on 2026-11-17:
 
-- [ ] Images and versions in section 2
-- [ ] nginx as the reverse proxy for `/api` (also changes the C4 container diagram, which currently shows the web app calling the API directly)
-- [ ] The health endpoint `GET /api/v1/health` for the `backend` health check. It is not in `api/openapi.yaml` yet and would be added there.
-- [ ] Whether seed data is loaded by the backend at start-up or by a separate one-off command
+| Open point | Decision | Where it is applied |
+|---|---|---|
+| Images and versions | Final: `postgres:16-alpine`, `python:3.12-slim`, `node:22` (build stage), `nginx:alpine` | Section 2 |
+| nginx as the reverse proxy for `/api` | Agreed: nginx serves the frontend build and forwards `/api` to `backend:8000`, so no CORS configuration is needed | Section 1; the C4 container diagram is updated to match |
+| Health endpoint for the `backend` | Agreed: `GET /api/v1/health` returns 200 when the API and the database are reachable | Section 2; added to `api/openapi.yaml` |
+| Loading the seed data | Agreed: the backend loads it at start-up when the catalogue is empty, right after `alembic upgrade head` | Section 3 |
