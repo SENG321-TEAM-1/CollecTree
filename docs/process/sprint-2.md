@@ -59,7 +59,6 @@
 | IMP-01 | 2026-11-16 | The eBay developer account is waiting for approval, so the price source spike cannot start. | Berke | The seed price provider was ready as a fallback. Resolved on 2026-11-17: the account was approved and the spike was completed (#96, PR #117). | Closed |
 | IMP-02 | 2026-11-16 | Four architecture pull requests (#93, #98, #100, #102) needed the Product Owner review required by CODEOWNERS, while the Product Owner also writes the SRS. | Elif | Review order agreed in the kick-off. Resolved on 2026-11-16: Elif approved all four. | Closed |
 | IMP-03 | 2026-11-16 | Sprint 2 work had not started for most members two days after the sprint start. | Feyza | Kick-off meeting, a personal task list for every member, and daily written stand-ups. On 2026-11-17 Elif, Feyza, Berke, and Çağrı are working; Kemal and Ata have not started yet. | Open |
-| Feyza | Kick-off meeting, a personal task list for every member, and daily written stand-ups. | Open |
 
 ## 5 Sprint 2 Review and Retrospective
 To be filled on 2026-11-23: what was delivered, what was not, what went well, and what to improve in Sprint 3, with owners.
