@@ -190,10 +190,10 @@ To simplify and digitalize diecast collection management, show collectors the re
 ### 5.3 Agile Process Management, Stand-up, and Retrospective Records
 Sprint 2 records: [docs/process/sprint-2.md](docs/process/sprint-2.md)
 
-   #### A. Board Administration (GitHub Projects)
-   Our board has five columns, so every requirement can be traced to its delivery:
+#### A. Board Administration (GitHub Projects)
+Our board has five columns, so every requirement can be traced to its delivery:
 1. **Backlog:** Prioritized user stories and epics created by the Product Owner.
- 2. **To Do:** Tasks committed for the current sprint (see its milestone) with owners, labels, and effort estimates.
+2. **To Do:** Tasks committed for the current sprint (see its milestone) with owners, labels, and effort estimates.
 3. **In Progress:** Tasks being worked on in their own branches.
 4. **In Review:** Tasks with an open pull request waiting for peer review.
 5. **Done:** Tasks merged into `develop` after review.
