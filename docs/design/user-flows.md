@@ -4,7 +4,7 @@
 |---|---|
 | Project | CollecTree |
 | Course | BM 321 / SENG 321 Software Engineering, Sprint 2 |
-| Version | 0.1.0 (draft) |
+| Version | 0.2.0 |
 | Owner (Accountable) | Ata Eren Atlı, Implementation and Integration Engineer |
 | Consulted | Berke Akman (Architect), Kemal Yusuf Ateşer (QA), Elif Zahide Arat (Product Owner) |
 | Sources | [`api/openapi.yaml`](../../api/openapi.yaml), [domain model](../architecture/domain-model.md) (business rules BR-01 to BR-19), [C4 model](../architecture/c4-model.md) |
@@ -278,21 +278,59 @@ Only the two users of a conversation can read or send its messages (BR-11). Mess
 
 ---
 
-## 9 Figma prototype
+## 9 Figma prototype and screens
 
-The link to the Figma file `CollecTree – Sprint 2 Prototype` and the exported PNG screens in `docs/design/screens/` will be added when the prototype is ready. The screens map to the API operations as follows:
+All 12 desktop screens (`1440×900`) are stored in [`docs/design/screens/`](screens/) and map to the API operations as follows:
 
-| # | Screen | API operations | Flows |
-|---|---|---|---|
-| 1 | Login | `login` | Section 2 |
-| 2 | Register | `register` | Section 2 |
-| 3 | My collection (list + brand/scale/series filters) | `listUserItems` | Sections 3, 4 |
-| 4 | Add item (catalogue search + price/date form) | `searchModels`, `addItem` | Section 3 |
-| 5 | Edit item (price, date, open for trade) | `updateItem`, `deleteItem` | Section 4 |
-| 6 | Portfolio dashboard (total value, profit/loss, history chart) | `getMyPortfolio`, `getMyPortfolioHistory` | Section 5 |
-| 7 | Model price history | `getPriceHistory` | Section 5 |
-| 8 | Public profile and collection (no purchase prices) | `getUserProfile`, `listUserItems` | Sections 6, 8 |
-| 9 | Make offer (choose my items and/or cash) | `createOffer` | Section 6 |
-| 10 | My offers (sent / received, status badges) | `listMyOffers`, `updateOfferStatus` | Section 7 |
-| 11 | Conversations list | `listConversations`, `startConversation` | Section 8 |
-| 12 | Conversation | `listMessages`, `sendMessage` | Section 8 |
+| # | Screen | File | API operations | Flows |
+|---|---|---|---|---|
+| 1 | Login | [`01-login.svg`](screens/01-login.svg) | `login` | Section 2 |
+| 2 | Register | [`02-register.svg`](screens/02-register.svg) | `register` | Section 2 |
+| 3 | My collection (list + brand/scale/series filters) | [`03-my-collection.svg`](screens/03-my-collection.svg) | `listUserItems` | Sections 3, 4 |
+| 4 | Add item (catalogue search + price/date form) | [`04-add-item.svg`](screens/04-add-item.svg) | `searchModels`, `addItem` | Section 3 |
+| 5 | Edit item (price, date, open for trade) | [`05-edit-item.svg`](screens/05-edit-item.svg) | `updateItem`, `deleteItem` | Section 4 |
+| 6 | Portfolio dashboard (total value, profit/loss, history chart) | [`06-portfolio-dashboard.svg`](screens/06-portfolio-dashboard.svg) | `getMyPortfolio`, `getMyPortfolioHistory` | Section 5 |
+| 7 | Model price history | [`07-model-price-history.svg`](screens/07-model-price-history.svg) | `getPriceHistory` | Section 5 |
+| 8 | Public profile and collection (no purchase prices) | [`08-public-profile.svg`](screens/08-public-profile.svg) | `getUserProfile`, `listUserItems` | Sections 6, 8 |
+| 9 | Make offer (choose my items and/or cash) | [`09-make-offer.svg`](screens/09-make-offer.svg) | `createOffer` | Section 6 |
+| 10 | My offers (sent / received, status badges) | [`10-my-offers.svg`](screens/10-my-offers.svg) | `listMyOffers`, `updateOfferStatus` | Section 7 |
+| 11 | Conversations list | [`11-conversations-list.svg`](screens/11-conversations-list.svg) | `listConversations`, `startConversation` | Section 8 |
+| 12 | Conversation | [`12-conversation.svg`](screens/12-conversation.svg) | `listMessages`, `sendMessage` | Section 8 |
+
+### 9.1 Screen previews
+
+#### 1. Login (`login`)
+![Login](screens/01-login.svg)
+
+#### 2. Register (`register`)
+![Register](screens/02-register.svg)
+
+#### 3. My Collection (`listUserItems`)
+![My Collection](screens/03-my-collection.svg)
+
+#### 4. Add Item (`searchModels`, `addItem`)
+![Add Item](screens/04-add-item.svg)
+
+#### 5. Edit Item (`updateItem`, `deleteItem`)
+![Edit Item](screens/05-edit-item.svg)
+
+#### 6. Portfolio Dashboard (`getMyPortfolio`, `getMyPortfolioHistory`)
+![Portfolio Dashboard](screens/06-portfolio-dashboard.svg)
+
+#### 7. Model Price History (`getPriceHistory`)
+![Model Price History](screens/07-model-price-history.svg)
+
+#### 8. Public Profile and Collection (`getUserProfile`, `listUserItems`)
+![Public Profile](screens/08-public-profile.svg)
+
+#### 9. Make Offer (`createOffer`)
+![Make Offer](screens/09-make-offer.svg)
+
+#### 10. My Offers (`listMyOffers`, `updateOfferStatus`)
+![My Offers](screens/10-my-offers.svg)
+
+#### 11. Conversations List (`listConversations`, `startConversation`)
+![Conversations List](screens/11-conversations-list.svg)
+
+#### 12. Conversation (`listMessages`, `sendMessage`)
+![Conversation](screens/12-conversation.svg)
