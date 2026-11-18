@@ -280,57 +280,60 @@ Only the two users of a conversation can read or send its messages (BR-11). Mess
 
 ## 9 Figma prototype and screens
 
+- **Figma file (`CollecTree – Sprint 2 Prototype`, view and comment):** [https://www.figma.com/design/kpeIcUYw4x5FKOvrRbYFaM/CollecTree-Sprint-2-Prototype?node-id=24-2](https://www.figma.com/design/kpeIcUYw4x5FKOvrRbYFaM/CollecTree-Sprint-2-Prototype?node-id=24-2)
+- **Interactive prototype (`Main Collector Journey`: Login → My Collection → Add Item → Portfolio Dashboard → Model Price History → Public Profile → Make Offer → My Offers → Conversations List → Conversation):** [https://www.figma.com/proto/kpeIcUYw4x5FKOvrRbYFaM/CollecTree-Sprint-2-Prototype?page-id=24%3A2&node-id=24-4&starting-point-node-id=24%3A4](https://www.figma.com/proto/kpeIcUYw4x5FKOvrRbYFaM/CollecTree-Sprint-2-Prototype?page-id=24%3A2&node-id=24-4&starting-point-node-id=24%3A4)
+
 All 12 desktop screens (`1440×900`) are stored in [`docs/design/screens/`](screens/) and map to the API operations as follows:
 
 | # | Screen | File | API operations | Flows |
 |---|---|---|---|---|
-| 1 | Login | [`01-login.svg`](screens/01-login.svg) | `login` | Section 2 |
-| 2 | Register | [`02-register.svg`](screens/02-register.svg) | `register` | Section 2 |
-| 3 | My collection (list + brand/scale/series filters) | [`03-my-collection.svg`](screens/03-my-collection.svg) | `listUserItems` | Sections 3, 4 |
-| 4 | Add item (catalogue search + price/date form) | [`04-add-item.svg`](screens/04-add-item.svg) | `searchModels`, `addItem` | Section 3 |
-| 5 | Edit item (price, date, open for trade) | [`05-edit-item.svg`](screens/05-edit-item.svg) | `updateItem`, `deleteItem` | Section 4 |
-| 6 | Portfolio dashboard (total value, profit/loss, history chart) | [`06-portfolio-dashboard.svg`](screens/06-portfolio-dashboard.svg) | `getMyPortfolio`, `getMyPortfolioHistory` | Section 5 |
-| 7 | Model price history | [`07-model-price-history.svg`](screens/07-model-price-history.svg) | `getPriceHistory` | Section 5 |
-| 8 | Public profile and collection (no purchase prices) | [`08-public-profile.svg`](screens/08-public-profile.svg) | `getUserProfile`, `listUserItems` | Sections 6, 8 |
-| 9 | Make offer (choose my items and/or cash) | [`09-make-offer.svg`](screens/09-make-offer.svg) | `createOffer` | Section 6 |
-| 10 | My offers (sent / received, status badges) | [`10-my-offers.svg`](screens/10-my-offers.svg) | `listMyOffers`, `updateOfferStatus` | Section 7 |
-| 11 | Conversations list | [`11-conversations-list.svg`](screens/11-conversations-list.svg) | `listConversations`, `startConversation` | Section 8 |
-| 12 | Conversation | [`12-conversation.svg`](screens/12-conversation.svg) | `listMessages`, `sendMessage` | Section 8 |
+| 1 | Login | [`01-login.png`](screens/01-login.png) / [`01-login.svg`](screens/01-login.svg) | `login` | Section 2 |
+| 2 | Register | [`02-register.png`](screens/02-register.png) / [`02-register.svg`](screens/02-register.svg) | `register` | Section 2 |
+| 3 | My collection (list + brand/scale/series filters) | [`03-my-collection.png`](screens/03-my-collection.png) / [`03-my-collection.svg`](screens/03-my-collection.svg) | `listUserItems` | Sections 3, 4 |
+| 4 | Add item (catalogue search + price/date form) | [`04-add-item.png`](screens/04-add-item.png) / [`04-add-item.svg`](screens/04-add-item.svg) | `searchModels`, `addItem` | Section 3 |
+| 5 | Edit item (price, date, open for trade) | [`05-edit-item.png`](screens/05-edit-item.png) / [`05-edit-item.svg`](screens/05-edit-item.svg) | `updateItem`, `deleteItem` | Section 4 |
+| 6 | Portfolio dashboard (total value, profit/loss, history chart) | [`06-portfolio-dashboard.png`](screens/06-portfolio-dashboard.png) / [`06-portfolio-dashboard.svg`](screens/06-portfolio-dashboard.svg) | `getMyPortfolio`, `getMyPortfolioHistory` | Section 5 |
+| 7 | Model price history | [`07-model-price-history.png`](screens/07-model-price-history.png) / [`07-model-price-history.svg`](screens/07-model-price-history.svg) | `getPriceHistory` | Section 5 |
+| 8 | Public profile and collection (no purchase prices) | [`08-public-profile.png`](screens/08-public-profile.png) / [`08-public-profile.svg`](screens/08-public-profile.svg) | `getUserProfile`, `listUserItems` | Sections 6, 8 |
+| 9 | Make offer (choose my items and/or cash) | [`09-make-offer.png`](screens/09-make-offer.png) / [`09-make-offer.svg`](screens/09-make-offer.svg) | `createOffer` | Section 6 |
+| 10 | My offers (sent / received, status badges) | [`10-my-offers.png`](screens/10-my-offers.png) / [`10-my-offers.svg`](screens/10-my-offers.svg) | `listMyOffers`, `updateOfferStatus` | Section 7 |
+| 11 | Conversations list | [`11-conversations-list.png`](screens/11-conversations-list.png) / [`11-conversations-list.svg`](screens/11-conversations-list.svg) | `listConversations`, `startConversation` | Section 8 |
+| 12 | Conversation | [`12-conversation.png`](screens/12-conversation.png) / [`12-conversation.svg`](screens/12-conversation.svg) | `listMessages`, `sendMessage` | Section 8 |
 
 ### 9.1 Screen previews
 
 #### 1. Login (`login`)
-![Login](screens/01-login.svg)
+![Login](screens/01-login.png)
 
 #### 2. Register (`register`)
-![Register](screens/02-register.svg)
+![Register](screens/02-register.png)
 
 #### 3. My Collection (`listUserItems`)
-![My Collection](screens/03-my-collection.svg)
+![My Collection](screens/03-my-collection.png)
 
 #### 4. Add Item (`searchModels`, `addItem`)
-![Add Item](screens/04-add-item.svg)
+![Add Item](screens/04-add-item.png)
 
 #### 5. Edit Item (`updateItem`, `deleteItem`)
-![Edit Item](screens/05-edit-item.svg)
+![Edit Item](screens/05-edit-item.png)
 
 #### 6. Portfolio Dashboard (`getMyPortfolio`, `getMyPortfolioHistory`)
-![Portfolio Dashboard](screens/06-portfolio-dashboard.svg)
+![Portfolio Dashboard](screens/06-portfolio-dashboard.png)
 
 #### 7. Model Price History (`getPriceHistory`)
-![Model Price History](screens/07-model-price-history.svg)
+![Model Price History](screens/07-model-price-history.png)
 
 #### 8. Public Profile and Collection (`getUserProfile`, `listUserItems`)
-![Public Profile](screens/08-public-profile.svg)
+![Public Profile](screens/08-public-profile.png)
 
 #### 9. Make Offer (`createOffer`)
-![Make Offer](screens/09-make-offer.svg)
+![Make Offer](screens/09-make-offer.png)
 
 #### 10. My Offers (`listMyOffers`, `updateOfferStatus`)
-![My Offers](screens/10-my-offers.svg)
+![My Offers](screens/10-my-offers.png)
 
 #### 11. Conversations List (`listConversations`, `startConversation`)
-![Conversations List](screens/11-conversations-list.svg)
+![Conversations List](screens/11-conversations-list.png)
 
 #### 12. Conversation (`listMessages`, `sendMessage`)
-![Conversation](screens/12-conversation.svg)
+![Conversation](screens/12-conversation.png)
