@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900">
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <g id="Component/Navbar">
+    <rect x="0" y="0" width="1440" height="64" fill="#0F172A"/>
+    <rect x="32" y="16" width="32" height="32" rx="8" fill="#2563EB"/>
+    <text x="48" y="38" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">CT</text>
+    <text x="76" y="38" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">CollecTree</text>
+    <rect x="260" y="14" width="149" height="36" rx="8" fill="#1E293B"/>
+    <text x="334.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">My Collection</text>
+    <text x="477.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Portfolio</text>
+    <text x="602.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Catalogue</text>
+    <text x="727.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">My Offers</text>
+    <text x="848" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Messages</text>
+    <rect x="1150" y="14" width="126" height="36" rx="8" fill="#2563EB"/>
+    <text x="1213" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">+ Add Item</text>
+    <rect x="1290" y="14" width="118" height="36" rx="18" fill="#1E293B" stroke="#334155"/>
+    <text x="1349" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#F8FAFC">@atalirr</text>
+  </g>
+  <text x="280" y="116" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#0F172A">Add a Model to My Collection</text>
+  <text x="280" y="142" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">Step 1: Search the shared diecast catalogue  •  Step 2: Enter your purchase price and date</text>
+  <rect x="280" y="166" width="880" height="660" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <text x="320" y="210" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#0F172A">1. Search catalogue model (GET /api/v1/models?q=gt3+rs)</text>
+  <rect x="320" y="222" width="800" height="44" rx="8" fill="#F8FAFC" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="338" y="249" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">porsche gt3 rs</text>
+  <rect x="320" y="276" width="800" height="148" rx="8" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <rect x="328" y="284" width="784" height="62" rx="6" fill="#EFF6FF" stroke="#2563EB"/>
+  <text x="346" y="309" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">✓ MiniGT — Porsche 911 (992) GT3 RS Weissach Package White (MGT00853)</text>
+  <text x="346" y="331" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#3B82F6">Scale: 1:64  •  Series: MiniGT Standard  •  Current market price: 955.46 TRY (International listing price (eBay), converted to TRY)</text>
+  <text x="346" y="376" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#334155">Hot Wheels — Porsche 911 GT3 RS (992) Rexy AO Racing (Car Culture Race Day)</text>
+  <text x="346" y="398" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#64748B">Scale: 1:64  •  Series: Car Culture Race Day  •  Current market price: 1,150.00 TRY</text>
+  <text x="320" y="466" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#0F172A">2. Your purchase details (Private — visible only to you, BR-02)</text>
+  <text x="320" y="502" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">Purchase price (TRY)</text>
+  <rect x="320" y="512" width="380" height="44" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.5"/>
+  <text x="338" y="539" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">800.00</text>
+  <text x="320" y="576" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#DC2626">400 Validation error example: Purchase price must be 0 or greater.</text>
+  <text x="740" y="502" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">Purchase date</text>
+  <rect x="740" y="512" width="380" height="44" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="758" y="539" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">2026-10-02</text>
+  <rect x="320" y="612" width="800" height="64" rx="10" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <rect x="342" y="632" width="44" height="24" rx="12" fill="#2563EB"/>
+  <circle cx="374" cy="644" r="9" fill="#FFFFFF"/>
+  <text x="402" y="642" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Open for trade</text>
+  <text x="402" y="661" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#64748B">Allow other collectors to send trade or cash offers for this item (BR-07)</text>
+  <rect x="320" y="720" width="180" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="410" y="748" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Cancel</text>
+  <rect x="900" y="720" width="220" height="46" rx="8" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="1010" y="748" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Add to My Collection</text>
+  <g id="Footer/Meta">
+    <rect x="0" y="864" width="1440" height="36" fill="#F1F5F9" stroke="#E2E8F0"/>
+    <text x="32" y="887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">CollecTree – Sprint 2 Prototype  |  Screen: Add Item</text>
+    <text x="1408" y="887" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="500" fill="#64748B">API: GET /api/v1/models [searchModels], POST /api/v1/items [addItem]</text>
+  </g>
+</svg>
