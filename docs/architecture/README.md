@@ -44,6 +44,7 @@ The architecture is shaped by these requirements and constraints.
 | Portfolio values are calculated, not stored | They can never get out of sync with items and prices | [Domain model](domain-model.md), section 2.2 |
 | Accepting an offer locks items first, then offers | Prevents double acceptance and deadlocks | [UML diagrams](uml-diagrams.md), section 4 |
 | Only an aggregated median is stored from eBay | Minimal data; truthful exemption from eBay's deletion notifications | [ADR-003](../adr/ADR-003-market-price-and-exchange-rate-source.md) |
+| Prices derived from eBay are used only inside CollecTree; list endpoints return at most 50 entries per page | Stays inside the eBay API License Agreement: no export, bulk download, or data feed | [ADR-003](../adr/ADR-003-market-price-and-exchange-rate-source.md), decision 6 |
 
 ---
 
@@ -93,8 +94,8 @@ Each quality attribute from the non-functional requirements is reached through a
 
 | ID | Risk or debt | Impact | Response | Status |
 |---|---|---|---|---|
-| R-1 | eBay production access is not granted or is limited | No real daily prices | Seed provider is the official source; eBay stays behind the interface | Open until the spike (#96) |
-| R-2 | Search keywords match the wrong model | Wrong prices | Median of at least 5 listings, title filter, keyword correction in the seed data | Mitigated |
+| R-1 | eBay production access is not granted or is limited | No real daily prices | Seed provider is the official source; eBay stays behind the interface | Mitigated: the Production keyset is active with 5,000 calls per day (#96) |
+| R-2 | Search keywords match the wrong model | Wrong prices | One catalogue model per release with a release-specific keyword; titles must match the keyword; a price is saved only if at least 5 listings remain and p75/p25 ≤ 2.0 | Mitigated: 10 of 10 test models consistent in the spike (#96) |
 | TD-1 | The price job runs inside the API process | A long or failing job uses API resources | The job is light; it can move to its own container without code changes | Accepted for the first release |
 | TD-2 | Messages and offers are refreshed by polling | Updates arrive with a delay | WebSocket is a later improvement (ADR-001) | Accepted for the first release |
 | TD-3 | Prices are US asking prices, not Turkish sale prices | Values can differ from the Turkish market | Clear label in the interface; a better source can be added behind the interface | Accepted, documented in ADR-003 |
