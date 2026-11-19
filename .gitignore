@@ -1,0 +1,37 @@
+# ---------------------------------------------------------------- Secrets
+# Real configuration and API keys stay on each developer's machine.
+# Only .env.example is committed.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# ---------------------------------------------------------------- Python (backend)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.mypy_cache/
+.ruff_cache/
+
+# ---------------------------------------------------------------- Node / Vite (frontend)
+node_modules/
+dist/
+.vite/
+npm-debug.log*
+
+# ---------------------------------------------------------------- Test reports (Playwright)
+playwright-report/
+test-results/
+
+# ---------------------------------------------------------------- Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
