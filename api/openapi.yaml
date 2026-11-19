@@ -22,8 +22,37 @@ tags:
   - name: Pricing
   - name: Messaging
   - name: Offers
+  - name: System
 
 paths:
+  # ---------------------------------------------------------------- System
+  /health:
+    get:
+      tags: [System]
+      operationId: getHealth
+      summary: Check that the API and the database are reachable
+      description: Used by the Docker Compose health check of the backend container (docs/architecture/deployment.md).
+      security: []
+      responses:
+        '200':
+          description: The API is running and the database answers
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, enum: [ok], example: ok }
+        '503':
+          description: The database is not reachable
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+              example:
+                title: Service unavailable
+                status: 503
+                code: DATABASE_UNAVAILABLE
+
   # ---------------------------------------------------------------- Auth
   /auth/register:
     post:

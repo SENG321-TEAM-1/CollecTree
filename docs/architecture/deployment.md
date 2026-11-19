@@ -132,6 +132,6 @@ The DevOps engineer decided the open points of the draft in [#114](https://githu
 | Open point | Decision | Where it is applied |
 |---|---|---|
 | Images and versions | Final: `postgres:16-alpine`, `python:3.12-slim`, `node:22` (build stage), `nginx:alpine` | Section 2 |
-| nginx as the reverse proxy for `/api` | Agreed: nginx serves the frontend build and forwards `/api` to `backend:8000`, so no CORS configuration is needed | Section 1; the C4 container diagram is updated to match |
-| Health endpoint for the `backend` | Agreed: `GET /api/v1/health` returns 200 when the API and the database are reachable | Section 2; added to `api/openapi.yaml` |
+| nginx as the reverse proxy for `/api` | Agreed: nginx serves the frontend build and forwards `/api` to `backend:8000`, so no CORS configuration is needed | Section 1; the [C4 container diagram](c4-model.md) shows the forwarding |
+| Health endpoint for the `backend` | Agreed: `GET /api/v1/health` returns 200 when the API and the database are reachable | Section 2; `getHealth` in `api/openapi.yaml` |
 | Loading the seed data | Agreed: the backend loads it at start-up when the catalogue is empty, right after `alembic upgrade head` | Section 3 |
