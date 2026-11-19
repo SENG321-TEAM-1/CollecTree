@@ -181,12 +181,13 @@ sequenceDiagram
         PP->>EB: GET /item_summary/search?q=keyword&category_ids=...&filter=conditionIds:{1000},buyingOptions:{FIXED_PRICE}
         alt eBay answers
             EB-->>PP: item summaries
-            PP->>PP: drop lots, bundles, loose, and custom items, then take the median USD price
-            PP-->>JOB: median_usd, sample_size
-            alt sample_size >= 5
+            PP->>PP: keep listings whose titles match the keyword, drop excluded words (lot, loose, custom, chase, ...)
+            PP->>PP: median, p25, and p75 of the remaining USD prices
+            PP-->>JOB: median_usd, sample_size, spread = p75 / p25
+            alt sample_size >= 5 and spread <= 2.0
                 JOB->>DB: UPSERT price_snapshot (model_id, price_date = today, price_usd, price_try = price_usd x rate, rate_date, source = ebay, sample_size)
-            else fewer than 5 listings
-                JOB->>JOB: keep the last price, log "too few listings"
+            else fewer than 5 listings or spread > 2.0
+                JOB->>JOB: keep the last price, log "too few listings" or "inconsistent prices"
             end
         else timeout or error from eBay
             EB-->>PP: error
@@ -202,6 +203,7 @@ sequenceDiagram
 - `UPSERT` on (`model_id`, `price_date`) means that running the job twice on one day does not create duplicate prices (BR-15).
 - One failing model never stops the job (NFR-REL-01). A missing rate never stops the job either: the last rate is reused and marked as stale (NFR-REL-02).
 - Nothing from eBay is stored except the median and the sample size: no listing, seller, or user data ([domain model](domain-model.md), section 2.2).
+- The consistency check turns a mixed result (several releases under one keyword) into a missing price, which the job already handles by keeping the last price (ADR-003, risk R-2).
 - With `PRICE_PROVIDER=seed`, `SeedPriceProvider` takes the place of `EbayPriceProvider` and returns the TRY price from the seed file. Tests always use it, so no test calls eBay or TCMB.
 
 ---
