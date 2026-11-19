@@ -71,7 +71,7 @@ flowchart LR
     tcmb["<b>TCMB</b><br/>[External System]"]
 
     collector -->|"Uses the app in a browser<br/>[HTTPS]"| web
-    web -->|"Calls /api/v1 endpoints;<br/>polls messages and offers<br/>[HTTPS, JSON, Bearer JWT]"| api
+    web -->|"Calls /api/v1 endpoints, forwarded<br/>by nginx to the API; polls messages<br/>and offers [HTTPS, JSON, Bearer JWT]"| api
     api -->|"Reads and writes data<br/>[SQL over TCP, SQLAlchemy]"| db
     api -->|"Price job: searches listings daily<br/>[HTTPS, JSON, OAuth 2.0]"| ebay
     api -->|"Price job: reads today.xml<br/>[HTTPS, XML]"| tcmb
@@ -86,7 +86,7 @@ flowchart LR
 
 | Container | Technology | Responsibility | Docker Compose service |
 |---|---|---|---|
-| Web App | React 18, Vite, React Router, Recharts; production build served by nginx | Screens and client-side validation. Holds no business rules; every rule is checked again by the REST API. Stores the JWT in memory and session storage | `frontend` |
+| Web App | React 18, Vite, React Router, Recharts; production build served by nginx | Screens and client-side validation. Holds no business rules; every rule is checked again by the REST API. Stores the JWT in memory and session storage. nginx also forwards `/api` to the REST API, so the browser uses one address | `frontend` |
 | REST API | Python 3.12, FastAPI, Pydantic, SQLAlchemy 2, Alembic, APScheduler | Implements `api/openapi.yaml`, all business rules (BR-01 to BR-19), authentication, and authorization. Also runs the daily price job (section 3.3) | `backend` |
 | Database | PostgreSQL 16 | Stores all persistent data ([domain model](domain-model.md), section 2). Constraints enforce BR-01, BR-12, and BR-15 | `db` |
 
@@ -96,6 +96,7 @@ flowchart LR
 |---|---|
 | The price job runs inside the REST API process, not as a separate container | ADR-001: one backend application keeps Docker Compose small. The job is light (about one call per model per day). It can move to its own container later without code changes because it only uses the `pricing` module |
 | Messages and offers are refreshed by polling, not WebSocket | ADR-001: simpler to build and test; real-time chat is a deferred improvement |
+| nginx in the `frontend` container forwards `/api` to the REST API (#114) | The browser talks to one address, so no CORS configuration is needed, and only one port is published ([deployment](deployment.md)) |
 | The database is reachable only from the `backend` container | The web app never talks to the database; all access goes through the business rules in the API |
 | Secrets (database password, JWT secret, eBay keys) come from environment variables | They are set in a local `.env` file that is never committed (see `.env.example`, #94) |
 
