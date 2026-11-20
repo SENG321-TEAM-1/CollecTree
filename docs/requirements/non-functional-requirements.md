@@ -1,6 +1,14 @@
 # Non-Functional Requirements and Quality Measures
 
-This document defines the non-functional requirements (NFRs) and measurable quality specifications for the **CollecTree** platform. All requirements are categorized according to the **ISO/IEC 25010** software product quality model. Each specification establishes a concrete, verifiable target alongside its corresponding verification method and architectural or requirement source.
+| Field | Value |
+|---|---|
+| Project | CollecTree |
+| Course | BM 321 / SENG 321 Software Engineering — Sprint 2 |
+| Version | 0.2.0 |
+| Owner (Accountable) | Kemal Yusuf Ateşer — Quality Assurance and Test Automation Engineer |
+| Consulted | Berke Akman (Architect), Çağrı Baynal (DevOps), Elif Zahide Arat (Product Owner) |
+
+This document defines the non-functional requirements (NFRs) and measurable quality specifications for the **CollecTree** platform. All requirements are categorized according to the **ISO/IEC 25010** software product quality model. Each specification establishes a concrete, verifiable target alongside its corresponding verification method and architectural or requirement source. The functional requirements are in the SRS; the architectural tactics that meet these requirements are in `docs/architecture/README.md`, section 4. The test plan in `docs/testing/test-plan.md` describes how each requirement is verified.
 
 | ID | Quality characteristic | Requirement | Measure and target | Verification | Source |
 |---|---|---|---|---|---|
