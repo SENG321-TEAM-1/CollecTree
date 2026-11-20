@@ -107,7 +107,7 @@ classDiagram
 | Object | Meaning | Owned by module (ADR-001) |
 |---|---|---|
 | User | A registered collector. A visitor without an account is not stored. | `auth`, `users` |
-| DiecastModel | One model in the shared catalogue, for example "MiniGT Nissan Skyline GT-R R34, 1:64". The team prepares the catalogue as seed data (AS-3); users cannot add models in the first release. | `catalog` |
+| DiecastModel | One specific release in the shared catalogue, for example "MiniGT Nissan Skyline GT-R (R34) V-Spec Lightning Yellow (MGT00762), 1:64". Different colours, catalogue numbers, and chase versions of the same casting are different models, because their market prices differ (ADR-003). The team prepares the catalogue as seed data (AS-3); users cannot add models in the first release. | `catalog` |
 | CollectionItem | One physical copy of a model that a user owns, with what they paid and when. A user can own several copies of the same model. | `collection` |
 | PriceSnapshot | The new-in-box market price of a model on one day, collected by the daily price job. | `pricing` |
 | ExchangeRate | The USD to TRY rate of one day, used to convert prices from the price source. | `pricing` |
@@ -153,7 +153,7 @@ erDiagram
         varchar scale "for example 1:64"
         varchar series "nullable"
         varchar image_url "catalogue image, nullable"
-        varchar search_keyword "used by the price job (R-2)"
+        varchar search_keyword "identifies one release, ADR-003 (R-2)"
     }
 
     collection_items {
@@ -238,6 +238,7 @@ erDiagram
 | **Soft delete for collection items** (`removed_at`) | The profit and loss chart (`GET /me/portfolio/history`) must show what the user owned on each past day. If removed items were deleted, past points of the chart would change. Offers that point to a removed item also stay readable. | Hard delete: simpler, but breaks the history chart and offer history |
 | **Portfolio is calculated, not stored** | The values come directly from `collection_items` and `price_snapshots`, so they can never get out of sync. The expected data size (hundreds of items per user) is small. | A daily `portfolio_snapshots` table: faster, but one more job that can fail; can be added later if needed |
 | **Price stored in both USD and TRY** with the rate date | The price source returns USD (system boundary). Keeping both values shows exactly how each TRY price was calculated. Seed prices are collected in TRY, so their USD value and rate date are empty. | Storing TRY only: loses the original value when a rate is wrong |
+| **One catalogue model per release, with a release-specific `search_keyword`** | One casting is sold in several colours, catalogue numbers, and chase versions with very different prices. A model for each release and a keyword that names it (for example `mini gt porsche gt3 rs (853,mgt00853)`) give one consistent price; the keyword syntax and the matching rule are in ADR-003. | One model per casting: simpler catalogue, but the price spike showed mixed, implausible medians for half of the models |
 | **No eBay listing, seller, or user data is stored** | Only one calculated median price per model per day and the number of listings it was calculated from (`sample_size`) are stored. This keeps the data small and lets the team truthfully apply for eBay's "Not persisting eBay data" exemption from account deletion notifications. `sample_size` shows how reliable a price is. | Storing each listing URL or listing: more eBay data to protect and delete, no use for a median price |
 | **Brand, scale, and series as text columns** | Matches the OpenAPI `DiecastModel` schema and the seed data. Filters work with a simple `WHERE`. | Separate `brands`, `scales`, `series` tables: cleaner, but more joins and seed files for no first-release benefit |
 | **`receiver_id` stored on the offer** | The receiver is the owner of the target item when the offer is created. Storing it keeps "offers I received" correct and fast. | Reading it through the target item every time |
@@ -266,11 +267,11 @@ These rules hold in every module. QA uses them as a source for test cases, and t
 | BR-16 | When an offer is accepted, every other `PENDING` offer that contains any of its items (as target or as offered item) becomes `CANCELLED`, because the trade has happened and those offers can no longer be fulfilled. | `offers` service, same transaction as the acceptance | The senders see `CANCELLED` in their offer list |
 | BR-17 | When an offer is accepted, its target item and offered items are closed for trade (`open_for_trade = false`), so no new offers arrive for items that were already traded. | `offers` service, same transaction as the acceptance | – |
 | BR-18 | An item cannot be closed for trade while it is the target of a `PENDING` offer. The owner first accepts or rejects those offers. | `collection` service | 409 on `PATCH /items/{itemId}` |
-| BR-19 | Only the owner can change an item's purchase price, purchase date, and trade status. The model of an item cannot be changed; the owner removes the item and adds a new one instead. | `collection` service | 403 |
+| BR-19 | Only the owner can change an item's purchase price, purchase date, and trade status. The model of an item cannot be changed; the owner removes the item and adds a new one instead. | `collection` service | 403 for another user; 400 when the request contains `modelId` |
 | BR-11 | Only the two users of a conversation can read or send its messages. | `messaging` service | 403 |
-| BR-12 | There is at most one conversation between two users. | Database | 409 on `POST /conversations` |
+| BR-12 | There is at most one conversation between two users. A user cannot start a conversation with themselves. | Database; `messaging` service | 409 on `POST /conversations` (the web app then opens the existing conversation); 400 for a conversation with oneself |
 | BR-13 | The market price is always the new-in-box price; condition does not change it. | Scope rule | – |
-| BR-14 | If a model has no price yet, its purchase price is used as its current value, so it adds zero profit or loss. | `pricing` service | – |
+| BR-14 | If a model has no price yet, its purchase price is used as its current value, so it adds zero profit or loss. In the portfolio history, an item counts from the day it was added (`added_at`) until the day it was removed (`removed_at`); on each day its value is the latest price on or before that day, or its purchase price if there is none. | `pricing` service | – |
 | BR-15 | There is at most one price per model per day. | Database | The job updates the existing row |
 
 ### 3.1 Offer life cycle
@@ -315,4 +316,4 @@ All four end states are final. An ended offer cannot be reopened; the sender cre
 | OQ-1 | When an offer is accepted, what happens to the other `PENDING` offers for the same items? | They become `CANCELLED`, because the trade has happened (BR-16, BR-17). | Decided 2026-11-14 |
 | OQ-2 | The API has no endpoint to change an item (for example to set `openForTrade` or correct a price). | `PATCH /items/{itemId}` is added to `api/openapi.yaml` (BR-18, BR-19). | Decided 2026-11-14 |
 | OQ-3 | Should a user see an offer's target item after the owner removes it? | Yes, as read-only history; this is why items are soft deleted. | Proposed |
-| OQ-4 | Which price source do we use? | Proposed: eBay Browse API for daily prices, TCMB for the USD to TRY rate, manually collected seed prices as fallback. Confirmed by the price source spike (AS-1) and recorded as ADR-003. | Proposed |
+| OQ-4 | Which price source do we use? | eBay Browse API for daily prices, TCMB for the USD to TRY rate, manually collected seed prices as fallback. Confirmed by the price source spike (#96) and recorded in ADR-003. | Decided 2026-11-19 |
