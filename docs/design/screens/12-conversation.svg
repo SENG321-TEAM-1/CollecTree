@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900">
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <g id="Component/Navbar">
+    <rect x="0" y="0" width="1440" height="64" fill="#0F172A"/>
+    <rect x="32" y="16" width="32" height="32" rx="8" fill="#2563EB"/>
+    <text x="48" y="38" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">CT</text>
+    <text x="76" y="38" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">CollecTree</text>
+    <text x="334.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">My Collection</text>
+    <text x="477.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Portfolio</text>
+    <text x="602.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Catalogue</text>
+    <text x="727.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">My Offers</text>
+    <rect x="796" y="14" width="104" height="36" rx="8" fill="#1E293B"/>
+    <text x="848" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Messages</text>
+    <rect x="1150" y="14" width="126" height="36" rx="8" fill="#2563EB"/>
+    <text x="1213" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">+ Add Item</text>
+    <rect x="1290" y="14" width="118" height="36" rx="18" fill="#1E293B" stroke="#334155"/>
+    <text x="1349" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#F8FAFC">@atalirr</text>
+  </g>
+  <rect x="180" y="92" width="1080" height="744" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="180" y="92" width="1080" height="76" rx="16" fill="#F8FAFC" stroke="#E2E8F0"/>
+  <circle cx="232" cy="130" r="22" fill="#1E293B"/>
+  <text x="232" y="136" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">BA</text>
+  <text x="270" y="125" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#0F172A">@berke_diecast</text>
+  <text x="270" y="147" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#64748B">Conversation #14  •  Only the two participants can read or send messages (BR-11)  •  Refreshed by polling</text>
+  <rect x="1050" y="110" width="180" height="40" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="1140" y="135" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">View public profile</text>
+  <rect x="640" y="200" width="580" height="82" rx="12" fill="#2563EB"/>
+  <text x="664" y="230" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#FFFFFF">Hi Berke! Is your MiniGT Lamborghini Huracan GT3 EVO2 (MGT00687)</text>
+  <text x="664" y="252" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#FFFFFF">unopened in its original box? I sent Offer #312 with my GT3 RS + 300 TRY.</text>
+  <text x="1196" y="272" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" fill="#BFDBFE">You • 14:15</text>
+  <rect x="220" y="308" width="580" height="82" rx="12" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <text x="244" y="338" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">Hi Ata! Yes, the Huracan MGT00687 is still sealed in its box.</text>
+  <text x="244" y="360" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">Your GT3 RS + 300 TRY offer looks fair! Let's arrange delivery on campus.</text>
+  <text x="244" y="380" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" fill="#64748B">@berke_diecast • 14:18</text>
+  <rect x="640" y="416" width="580" height="64" rx="12" fill="#2563EB"/>
+  <text x="664" y="446" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#FFFFFF">Great, once you accept Offer #312 we can meet at the engineering building!</text>
+  <text x="1196" y="470" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" fill="#BFDBFE">You • 14:19</text>
+  <line x1="180" y1="680" x2="1260" y2="680" stroke="#E2E8F0"/>
+  <rect x="212" y="704" width="860" height="52" rx="10" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="232" y="735" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">Type a message (1 to 1000 characters)...</text>
+  <rect x="1090" y="704" width="140" height="52" rx="8" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="1160" y="735" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Send</text>
+  <text x="212" y="784" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#64748B">Validation (400): Message text must be between 1 and 1000 characters. Payment and delivery are handled outside the platform (BR-10).</text>
+  <g id="Footer/Meta">
+    <rect x="0" y="864" width="1440" height="36" fill="#F1F5F9" stroke="#E2E8F0"/>
+    <text x="32" y="887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">CollecTree – Sprint 2 Prototype  |  Screen: Conversation</text>
+    <text x="1408" y="887" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="500" fill="#64748B">API: GET /api/v1/conversations/{id}/messages [listMessages], POST /api/v1/conversations/{id}/messages [sendMessage]</text>
+  </g>
+</svg>

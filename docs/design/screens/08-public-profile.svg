@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900">
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <g id="Component/Navbar">
+    <rect x="0" y="0" width="1440" height="64" fill="#0F172A"/>
+    <rect x="32" y="16" width="32" height="32" rx="8" fill="#2563EB"/>
+    <text x="48" y="38" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">CT</text>
+    <text x="76" y="38" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">CollecTree</text>
+    <text x="334.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">My Collection</text>
+    <text x="477.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Portfolio</text>
+    <rect x="546" y="14" width="113" height="36" rx="8" fill="#1E293B"/>
+    <text x="602.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Catalogue</text>
+    <text x="727.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">My Offers</text>
+    <text x="848" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Messages</text>
+    <rect x="1150" y="14" width="126" height="36" rx="8" fill="#2563EB"/>
+    <text x="1213" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">+ Add Item</text>
+    <rect x="1290" y="14" width="118" height="36" rx="18" fill="#1E293B" stroke="#334155"/>
+    <text x="1349" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#F8FAFC">@atalirr</text>
+  </g>
+  <rect x="48" y="88" width="1344" height="124" rx="14" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <circle cx="110" cy="150" r="38" fill="#1E293B"/>
+  <text x="110" y="158" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">BA</text>
+  <text x="168" y="134" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="24" font-weight="700" fill="#0F172A">@berke_diecast</text>
+  <text x="168" y="160" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#475569">JDM &amp; GT3 1:64 collector in Ankara  •  MiniGT, Tarmac Works, Inno64</text>
+  <text x="168" y="186" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#2563EB">312 Collection Items  •  Purchase prices and purchase dates are private (BR-02)</text>
+  <rect x="1180" y="126" width="180" height="44" rx="8" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="1270" y="153" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Send message</text>
+  <rect x="48" y="228" width="1344" height="54" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="72" y="260" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#475569">Filter @berke_diecast's collection:</text>
+  <rect x="310" y="238" width="170" height="34" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="326" y="260" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#0F172A">Brand: All ▾</text>
+  <rect x="494" y="238" width="150" height="34" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="510" y="260" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#0F172A">Scale: 1:64 ▾</text>
+  <rect x="658" y="238" width="210" height="34" rx="6" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="674" y="260" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#0F172A">Series: All ▾</text>
+  <rect x="48" y="302" width="656" height="250" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="68" y="322" width="240" height="150" rx="8" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <rect x="80" y="334" width="111" height="24" rx="6" fill="#0F172A" opacity="0.8"/>
+  <text x="135.5" y="350" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">MiniGT • 1:64</text>
+  <path d="M 116 415 L 144.8 388 L 216.8 388 L 255.2 409 L 269.6 415 L 269.6 430 L 106.4 430 Z" fill="#16A34A"/>
+  <circle cx="140" cy="430" r="14" fill="#1E293B" stroke="#94A3B8" stroke-width="4"/>
+  <circle cx="236" cy="430" r="14" fill="#1E293B" stroke="#94A3B8" stroke-width="4"/>
+  <rect x="328" y="322" width="118" height="26" rx="13" fill="#DCFCE7"/>
+  <text x="387" y="339" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#15803D">Open for trade</text>
+  <text x="328" y="372" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Lamborghini Huracan GT3 EVO2</text>
+  <text x="328" y="396" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#64748B">Presentation Green (MGT00687)  •  MiniGT Motorsport</text>
+  <text x="328" y="434" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#64748B">Current market value:</text>
+  <text x="470" y="434" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#0F172A">1,260.50 TRY</text>
+  <text x="328" y="456" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" fill="#64748B">International listing price (eBay), converted to TRY</text>
+  <rect x="328" y="486" width="170" height="42" rx="8" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="413" y="512" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Make offer</text>
+  <rect x="512" y="486" width="170" height="42" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="597" y="512" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Price history</text>
+  <rect x="736" y="302" width="656" height="250" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="756" y="322" width="240" height="150" rx="8" fill="#F1F5F9" stroke="#E2E8F0"/>
+  <rect x="768" y="334" width="111" height="24" rx="6" fill="#0F172A" opacity="0.8"/>
+  <text x="823.5" y="350" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" font-weight="600" fill="#FFFFFF">Tarmac • 1:64</text>
+  <path d="M 804 415 L 832.8 388 L 904.8 388 L 943.2 409 L 957.6 415 L 957.6 430 L 794.4 430 Z" fill="#2563EB"/>
+  <circle cx="828" cy="430" r="14" fill="#1E293B" stroke="#94A3B8" stroke-width="4"/>
+  <circle cx="924" cy="430" r="14" fill="#1E293B" stroke="#94A3B8" stroke-width="4"/>
+  <rect x="1016" y="322" width="140" height="26" rx="13" fill="#F1F5F9"/>
+  <text x="1086" y="339" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">Not open for trade</text>
+  <text x="1016" y="372" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="17" font-weight="700" fill="#0F172A">Toyota Supra Joshua Vides (T64-011-JV)</text>
+  <text x="1016" y="396" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#64748B">Collab64  •  Tarmac Works</text>
+  <text x="1016" y="434" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" fill="#64748B">Current market value:</text>
+  <text x="1158" y="434" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#0F172A">1,411.51 TRY</text>
+  <text x="1016" y="456" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="11" fill="#64748B">International listing price (eBay), converted to TRY</text>
+  <rect x="1016" y="486" width="170" height="42" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="1101" y="512" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Price history</text>
+  <g id="Footer/Meta">
+    <rect x="0" y="864" width="1440" height="36" fill="#F1F5F9" stroke="#E2E8F0"/>
+    <text x="32" y="887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">CollecTree – Sprint 2 Prototype  |  Screen: Public Profile and Collection</text>
+    <text x="1408" y="887" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="500" fill="#64748B">API: GET /api/v1/users/{username} [getUserProfile], GET /api/v1/users/{username}/items [listUserItems]</text>
+  </g>
+</svg>
