@@ -29,9 +29,9 @@ This document defines the overall verification and validation strategy for the *
 |---|---|---|---|---|
 | **Unit Testing** | Domain services, validation rules, JWT utilities, valuation math, TCMB stale-rate fallback (`NFR-REL-02`) | `pytest`, `pytest-cov`, `unittest.mock` | Automated on every Push and Pull Request via GitHub Actions (Sprint 3) | Implementation & QA Engineers |
 | **Integration Testing** | REST API endpoints, database persistence, ownership authorization (`403 Forbidden`), concurrent offer locking (`NFR-REL-03`), expired JWT handling | `pytest`, FastAPI `TestClient` / HTTPX, PostgreSQL test container | Local verification & pre-merge validation (scheduled for CI expansion in Sprint 3) | QA & Test Automation Engineer |
-| **API Contract Testing** | Request/response schemas, HTTP status codes, and RFC 9457 `Problem` error payloads against `api/openapi.yaml` (`NFR-COMP-01`) | `validate-openapi`, Schemathesis / OpenAPI schema assertions | Automated in GitHub Actions CI & PR checks | QA & Backend Engineers |
+| **API Contract Testing** | Request/response schemas, HTTP status codes, and RFC 7807 `Problem` error payloads against `api/openapi.yaml` (`NFR-COMP-01`) | `validate-openapi`, Schemathesis / OpenAPI schema assertions | Automated in GitHub Actions CI & PR checks | QA & Backend Engineers |
 | **System & E2E Testing** | End-to-end user journeys from login to portfolio visualization (`NFR-USA-01`, max 8 clicks) and multi-user offer flows | Manual test scripts, browser DevTools (`NFR-PERF-03`) | Pre-demo and Sprint review staging checks | QA Engineer & Product Owner |
-| **Non-Functional & Portability Testing** | Cold/warm Docker startup time (`NFR-PORT-01`), container restart persistence (`NFR-REL-04`), read latency under 1,000 items (`NFR-PERF-01`), cross-browser compatibility (`NFR-COMP-02`) | `docker compose`, load script, Chrome / Firefox / Safari | Before Sprint 2 demo & release freeze | DevOps & QA Engineers |
+| **Non-Functional & Portability Testing** | Cold/warm Docker startup time (`NFR-PORT-01`), container restart persistence (`NFR-REL-04`), read latency under 1,000 items (`NFR-PERF-01`), cross-browser compatibility (`NFR-COMP-02`) | `docker compose`, load script, Chrome / Firefox / Safari | Before the final demo | DevOps & QA Engineers |
 
 ---
 
@@ -108,6 +108,8 @@ Every business rule in `docs/architecture/domain-model.md` (section 3) and the p
 | ADR-003 | test_listing_title_must_contain_every_keyword | Unit |
 | ADR-003 | test_price_is_not_saved_when_fewer_than_5_listings_remain | Unit |
 | ADR-003 | test_price_is_not_saved_when_p75_p25_spread_is_above_2 | Unit |
+| ADR-003 | test_listing_a_page_with_limit_above_50_returns_400 | Integration |
+| BR-12 | test_starting_a_conversation_with_yourself_returns_400 | Integration |
 
 The ADR-003 tests use saved listing titles and prices, not live eBay calls.
 
