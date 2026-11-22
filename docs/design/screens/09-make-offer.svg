@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900">
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <g id="Component/Navbar">
+    <rect x="0" y="0" width="1440" height="64" fill="#0F172A"/>
+    <rect x="32" y="16" width="32" height="32" rx="8" fill="#2563EB"/>
+    <text x="48" y="38" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">CT</text>
+    <text x="76" y="38" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">CollecTree</text>
+    <text x="334.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">My Collection</text>
+    <text x="477.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Portfolio</text>
+    <text x="602.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Catalogue</text>
+    <rect x="671" y="14" width="113" height="36" rx="8" fill="#1E293B"/>
+    <text x="727.5" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">My Offers</text>
+    <text x="848" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="500" fill="#CBD5E1">Messages</text>
+    <rect x="1150" y="14" width="126" height="36" rx="8" fill="#2563EB"/>
+    <text x="1213" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#FFFFFF">+ Add Item</text>
+    <rect x="1290" y="14" width="118" height="36" rx="18" fill="#1E293B" stroke="#334155"/>
+    <text x="1349" y="37" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="500" fill="#F8FAFC">@atalirr</text>
+  </g>
+  <text x="180" y="110" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#0F172A">Make an Offer</text>
+  <text x="180" y="136" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">Offer your own collection items, a cash amount in TRY, or both (BR-06)</text>
+  <rect x="180" y="156" width="1080" height="680" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="220" y="186" width="1000" height="84" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+  <text x="244" y="212" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#2563EB">TARGET ITEM OWNED BY @berke_diecast (Item #5521 — Open for trade)</text>
+  <text x="244" y="238" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#0F172A">MiniGT — Lamborghini Huracan GT3 EVO2 Presentation Green (MGT00687)</text>
+  <text x="244" y="258" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#64748B">Current market value: 1,260.50 TRY (International listing price (eBay), converted to TRY)</text>
+  <text x="220" y="306" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#0F172A">1. Choose items from your collection to offer in exchange (optional)</text>
+  <rect x="220" y="320" width="484" height="86" rx="10" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="244" y="352" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">☑ MiniGT Porsche 911 (992) GT3 RS White (MGT00853)</text>
+  <text x="244" y="376" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#3B82F6">Item #7310  •  Market value: 955.46 TRY</text>
+  <rect x="736" y="320" width="484" height="86" rx="10" fill="#FFFFFF" stroke="#CBD5E1"/>
+  <text x="760" y="352" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#334155">☐ MiniGT Nissan Skyline GT-R (R34) Yellow (MGT00762)</text>
+  <text x="760" y="376" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#64748B">Item #7311  •  Market value: 668.06 TRY</text>
+  <text x="220" y="446" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#0F172A">2. Cash amount to add in TRY (optional)</text>
+  <rect x="220" y="458" width="360" height="44" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="238" y="485" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">300.00</text>
+  <rect x="220" y="524" width="1000" height="52" rx="8" fill="#FEF3C7" stroke="#F59E0B"/>
+  <text x="244" y="555" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="700" fill="#92400E">Notice (BR-10): Payment and delivery are handled by the users outside the platform.</text>
+  <rect x="220" y="592" width="1000" height="92" rx="8" fill="#FEE2E2" stroke="#FCA5A5"/>
+  <text x="244" y="616" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="700" fill="#B91C1C">VALIDATION &amp; CONFLICT ERROR STATES (BR-06, BR-07):</text>
+  <text x="244" y="638" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#991B1B">• 400 (BR-06): Add at least one of your items or a cash amount.</text>
+  <text x="244" y="656" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#991B1B">• 409 (BR-07): This item is not open for trade.   |   403 (BR-07): You cannot make an offer for your own item.</text>
+  <rect x="220" y="720" width="180" height="46" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+  <text x="310" y="748" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#0F172A">Cancel</text>
+  <rect x="1000" y="720" width="220" height="46" rx="8" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/>
+  <text x="1110" y="748" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Send Offer</text>
+  <g id="Footer/Meta">
+    <rect x="0" y="864" width="1440" height="36" fill="#F1F5F9" stroke="#E2E8F0"/>
+    <text x="32" y="887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">CollecTree – Sprint 2 Prototype  |  Screen: Make Offer</text>
+    <text x="1408" y="887" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="500" fill="#64748B">API: POST /api/v1/offers [createOffer]</text>
+  </g>
+</svg>
