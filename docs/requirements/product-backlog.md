@@ -1,4 +1,4 @@
-# Initial Product Backlog
+<img width="1916" height="1077" alt="image" src="https://github.com/user-attachments/assets/d74a956e-82c3-4c1d-adff-12897cfdef6a" /># Initial Product Backlog
 
 This document summarizes the CollecTree Product Backlog for the first release. The backlog itself lives in GitHub Issues and on the [CollecTree Sprint Board](https://github.com/orgs/SENG321-TEAM-1/projects/1); this page shows all items in one place with their priorities, estimates, dependencies, and owners. The Product Owner (Elif) is accountable for the backlog (RACI row 6.1).
 
@@ -20,13 +20,13 @@ Every item has a label (`epic`, `feature`, `user-story`, or `task`), and feature
 | Epic | Feature | Priority | Estimate (SP) | User stories | Owner |
 | :--- | :--- | :---: | :---: | :--- | :--- |
 | [#25](https://github.com/SENG321-TEAM-1/CollecTree/issues/25) EPIC-1: Accounts | [#56](https://github.com/SENG321-TEAM-1/CollecTree/issues/56) F-01: Account Access | High | 6 | [#4](https://github.com/SENG321-TEAM-1/CollecTree/issues/4) US-01, [#21](https://github.com/SENG321-TEAM-1/CollecTree/issues/21) US-06 | Elif |
-| [#26](https://github.com/SENG321-TEAM-1/CollecTree/issues/26) EPIC-2: Collection | [#58](https://github.com/SENG321-TEAM-1/CollecTree/issues/58) F-02: Collection Management | High | 7 | [#5](https://github.com/SENG321-TEAM-1/CollecTree/issues/5) US-02, [#22](https://github.com/SENG321-TEAM-1/CollecTree/issues/22) US-07 | Elif |
+| [#26](https://github.com/SENG321-TEAM-1/CollecTree/issues/26) EPIC-2: Collection | [#58](https://github.com/SENG321-TEAM-1/CollecTree/issues/58) F-02: Collection Management | High | 10 | [#5](https://github.com/SENG321-TEAM-1/CollecTree/issues/5) US-02, [#22](https://github.com/SENG321-TEAM-1/CollecTree/issues/22) US-07, [#107](https://github.com/SENG321-TEAM-1/CollecTree/issues/107) US-10 | Elif |
 | [#27](https://github.com/SENG321-TEAM-1/CollecTree/issues/27) EPIC-3: Pricing and Portfolio | [#61](https://github.com/SENG321-TEAM-1/CollecTree/issues/61) F-03: Market Price Tracking | Medium | 8 | [#23](https://github.com/SENG321-TEAM-1/CollecTree/issues/23) US-08 | Elif |
 | [#27](https://github.com/SENG321-TEAM-1/CollecTree/issues/27) EPIC-3: Pricing and Portfolio | [#66](https://github.com/SENG321-TEAM-1/CollecTree/issues/66) F-04: Portfolio Valuation | Medium | 3 | [#6](https://github.com/SENG321-TEAM-1/CollecTree/issues/6) US-03 | Elif |
 | [#28](https://github.com/SENG321-TEAM-1/CollecTree/issues/28) EPIC-4: Social and Trading | [#65](https://github.com/SENG321-TEAM-1/CollecTree/issues/65) F-05: Collector Discovery | Medium | 5 | [#7](https://github.com/SENG321-TEAM-1/CollecTree/issues/7) US-04 | Elif |
 | [#28](https://github.com/SENG321-TEAM-1/CollecTree/issues/28) EPIC-4: Social and Trading | [#69](https://github.com/SENG321-TEAM-1/CollecTree/issues/69) F-06: Trade Negotiation | Low | 16 | [#8](https://github.com/SENG321-TEAM-1/CollecTree/issues/8) US-05, [#24](https://github.com/SENG321-TEAM-1/CollecTree/issues/24) US-09 | Elif |
 
-The first release is estimated at **45 story points** in total.
+The first release is estimated at **48 story points** in total.
 
 ## 3 User stories
 
@@ -38,11 +38,14 @@ Priority 1 is the highest. Stories are estimated in story points (SP) on the Fib
 | 1 | US-06 | [#21](https://github.com/SENG321-TEAM-1/CollecTree/issues/21) User Login | F-01 | 3 | Requires US-01 to be completed first. | Çağrı |
 | 2 | US-02 | [#5](https://github.com/SENG321-TEAM-1/CollecTree/issues/5) Add Collection Item | F-02 | 5 | Requires US-01 to be completed first. | Ata |
 | 2 | US-07 | [#22](https://github.com/SENG321-TEAM-1/CollecTree/issues/22) Remove Collection Item | F-02 | 2 | Requires US-02 (so there are items to remove). The pending-offer rule depends on US-09 (Offers). | Feyza |
+| 2 | US-10 | [#107](https://github.com/SENG321-TEAM-1/CollecTree/issues/107) Edit Collection Item | F-02 | 3 | Requires US-02 (so there are items to edit). The pending-offer rule depends on US-09 (Offers). | Elif |
 | 3 | US-08 | [#23](https://github.com/SENG321-TEAM-1/CollecTree/issues/23) Automatic Market Price Tracking | F-03 | 8 | Requires the model catalogue (seed data). Access to a real price source will be tested in a Sprint 2 spike (assumption AS-1); until then a mock price provider is used. | Berke |
 | 3 | US-03 | [#6](https://github.com/SENG321-TEAM-1/CollecTree/issues/6) Portfolio Statistics | F-04 | 3 | Requires US-02 (so there is data to calculate) and US-08 (so market prices are available). | Elif |
 | 4 | US-04 | [#7](https://github.com/SENG321-TEAM-1/CollecTree/issues/7) Social Discovery | F-05 | 5 | Requires US-02 (so there are items to show). | Çağrı |
 | 5 | US-05 | [#8](https://github.com/SENG321-TEAM-1/CollecTree/issues/8) Direct Messaging for Trades | F-06 | 8 | Requires US-01 (for user accounts) and US-04 (to discover profiles to message). | Kemal |
 | 5 | US-09 | [#24](https://github.com/SENG321-TEAM-1/CollecTree/issues/24) Trade and Cash Offers | F-06 | 8 | Requires US-02 (items must exist) and US-04 (to find items of other collectors). | Ata |
+
+
 
 ## 4 Tasks
 
