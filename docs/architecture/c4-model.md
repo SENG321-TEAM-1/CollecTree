@@ -47,7 +47,7 @@ flowchart TB
 |---|---|---|
 | Visitor | Reads public data only | Not authenticated; purchase prices are never shown (BR-02) |
 | Collector | Owns a collection, messages, and offers | Authenticated with a JWT; can change only their own data (BR-03) |
-| eBay Browse API | Source of the daily market price | Only an aggregated median and sample size are stored, never listing or seller data. If eBay fails, the last known price stays and the seed provider can replace eBay (R-1) |
+| eBay Browse API | Source of the daily market price | Only an aggregated median and sample size are stored, never listing or seller data. The prices are used only inside CollecTree (ADR-003, decision 6). If eBay fails, the last known price stays and the seed provider can replace eBay (R-1) |
 | TCMB | Source of the USD to TRY rate | No rate on weekends and holidays: the last known rate is reused and marked as stale |
 
 **Outside the boundary:** payments, shipping, and the exchange of the items themselves. Accepted offers are completed by the users outside the platform (BR-10). Turkish listing sites are not used as a price source because their terms of use and `robots.txt` forbid automated collection (#96).
@@ -180,7 +180,7 @@ Arrows show "uses the service of". Every module also uses `core`; those arrows a
 | `catalog` | Searching and reading catalogue models; loading the seed catalogue | `diecast_models` | `/models` | – |
 | `collection` | Adding, changing, listing, and soft-deleting items; hiding private fields | `collection_items` | `/items`, `/items/{itemId}`, `/users/{username}/items` | BR-02, BR-03, BR-04, BR-19 |
 | `pricing` | Daily price job, price history, current price, portfolio value and history | `price_snapshots`, `exchange_rates` | `/models/{modelId}/prices`, `/me/portfolio`, `/me/portfolio/history` | BR-13, BR-14, BR-15 |
-| `pricing` providers | `PriceProvider` returns a median USD price and sample size for a search keyword. `EbayPriceProvider` calls eBay; `SeedPriceProvider` reads the seed file and is used in tests and when `PRICE_PROVIDER=seed`. `TcmbRateProvider` returns the daily rate | – | – | – |
+| `pricing` providers | `PriceProvider` returns a median USD price, the sample size, and the p75/p25 ratio for a search keyword, after applying the matching rule of ADR-003. `EbayPriceProvider` calls eBay; `SeedPriceProvider` reads the seed file and is used in tests and when `PRICE_PROVIDER=seed`. `TcmbRateProvider` returns the daily rate | – | – | – |
 | `users` | Public profile with item count | – (reads through `auth` and `collection`) | `/users/{username}` | – |
 | `messaging` | Starting conversations, sending and reading messages | `conversations`, `messages` | `/conversations`, `/conversations/{id}/messages` | BR-11, BR-12 |
 | `offers` | Creating offers and changing their status; cancelling other offers and closing items for trade on acceptance | `offers`, `offer_items` | `/offers`, `/offers/{offerId}` | BR-06 to BR-10, BR-16, BR-17 |
@@ -199,8 +199,8 @@ These rules keep the modules independent, so that each can be built and tested b
 
 1. At 06:00 Europe/Istanbul, the job asks `TcmbRateProvider` for today's USD to TRY rate. If there is no new rate (weekend or holiday), it reuses the last one and marks it as stale.
 2. It asks `catalog` for every model and its search keyword.
-3. For each model it asks the selected `PriceProvider` for the median price and the sample size.
-4. If the sample size is at least 5, it stores the price in USD and TRY with the rate date (BR-15: one row per model per day). Otherwise it keeps the last price.
+3. For each model it asks the selected `PriceProvider` for the median price, the sample size, and the p75/p25 ratio. The provider keeps only listings whose titles match the model's keyword (ADR-003).
+4. If at least 5 listings remain **and** p75/p25 is at most 2.0, it stores the price in USD and TRY with the rate date (BR-15: one row per model per day). Otherwise it keeps the last price.
 5. One failed model does not stop the job; errors are logged and the next model is processed.
 
 The detailed sequence diagram is in the UML document.

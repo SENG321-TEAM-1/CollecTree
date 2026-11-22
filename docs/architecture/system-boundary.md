@@ -60,7 +60,7 @@ flowchart TB
 | Deployment | The whole system must start with one `docker compose up` command. |
 | Quality | At least 50 percent unit-test coverage, enforced in GitHub Actions; SonarQube analysis in the final submission. |
 | Team | Six third-year students without prior project experience; technology choices favor simplicity (see `docs/adr/`). |
-| Legal | The platform must respect the terms of use of external price sources and must not store payment data. |
+| Legal | The platform must respect the terms of use of external price sources and must not store payment data. Prices derived from eBay are used only inside CollecTree: no export, bulk download, data feed, or AI training (ADR-003). |
 | Privacy | Personal data is limited to username, email, and password hash. |
 
 ## 4 Risks
@@ -68,7 +68,7 @@ flowchart TB
 | ID | Risk | Response |
 |---|---|---|
 | R-1 | The market price source blocks, limits, or changes its API, or production access is not granted. | Price access sits behind the `PriceProvider` interface; the seed price provider keeps tests and the demo working (ADR-003). |
-| R-2 | Model names do not match listings exactly, producing wrong prices. | Use the median of at least 5 listings, drop lots and bundles by title, store the sample size with each price, and let the team correct the search keyword per model in the seed data. No listing data is stored (ADR-003). |
+| R-2 | Model names do not match listings exactly, producing wrong prices. | Every catalogue model is one release with a release-specific search keyword; a listing counts only if its title matches the keyword; the price is saved only if at least 5 listings remain and p75/p25 is at most 2.0, otherwise the last price is kept. Keywords are checked with the spike script before they are added. No listing data is stored (ADR-003). |
 | R-3 | Users treat the platform as responsible for failed off-platform payments. | Clear notice in the offer screen; payments are explicitly out of scope. |
 | R-4 | Scope grows beyond what the team can deliver. | Product Owner protects the boundary in this document; new ideas go to the deferred list. |
 
