@@ -48,7 +48,7 @@ The system is designed as a standalone platform. Its high-level context and cont
 The system is accessed via current modern web browsers. The backend infrastructure runs using Docker Compose. The system and user interface are entirely in English.
 
 ### 2.4 Constraints
-System boundaries and constraints are defined in `docs/architecture/system-boundary.md` (Section Constraints). A major constraint is that no financial transactions or checkouts are processed on the platform (BR-10). Payments and deliveries are handled outside the system by the users.
+System boundaries and constraints are defined in `docs/architecture/system-boundary.md` (Section Constraints). A major constraint is that no financial transactions or checkouts are processed on the platform (BR-10). Payments and deliveries are handled outside the system by the users. Prices derived from eBay are used only inside CollecTree: they are not exported, downloaded in bulk, or offered as a data feed (ADR-003, decision 6).
 
 ### 2.5 Assumptions
 Refer to `docs/architecture/system-boundary.md` for assumptions AS-1 to AS-4.
@@ -65,16 +65,16 @@ Refer to `docs/architecture/system-boundary.md` for assumptions AS-1 to AS-4.
 ### 3.2 F-02 Collection Management
 | ID | Requirement | User story | API operation | Business rules |
 |---|---|---|---|---|
-| FR-05 | The system shall let a user search the catalogue for models to add to their collection. | US-02 | `searchModels` | - |
+| FR-05 | The system shall let a user search the catalogue for models to add to their collection. Results are returned in pages of at most 50 models. | US-02 | `searchModels` | - |
 | FR-06 | The system shall let a user add an item to their collection based on an existing catalogue model. | US-02 | `addItem` | - |
 | FR-07 | The system shall let a user update the purchase price, purchase date, and trade status of their own items. | US-10 | `updateItem` | BR-03, BR-18, BR-19 |
 | FR-08 | The system shall let a user remove an item from their collection, applying a soft delete. | US-07 | `deleteItem` | BR-03, BR-04, BR-05 |
-| FR-09 | The system shall list and filter the items present in a user's collection. | US-02, US-04 | `listUserItems` | BR-04 |
+| FR-09 | The system shall list and filter the items present in a user's collection. Results are returned in pages of at most 50 items. | US-02, US-04 | `listUserItems` | BR-04 |
 
 ### 3.3 F-03 Market Price Tracking
 | ID | Requirement | User story | API operation | Business rules |
 |---|---|---|---|---|
-| FR-11 | The system shall automatically update the market prices of models daily via a background job. | US-08 | `(background job)` | BR-13, BR-15 |
+| FR-11 | The system shall automatically update the market prices of models daily via a background job. A price is saved only if at least 5 matching listings remain and their prices are consistent (p75/p25 ≤ 2.0); otherwise the last known price is kept (ADR-003). | US-08 | `(background job)` | BR-13, BR-15 |
 | FR-12 | The system shall automatically update the USD to TRY exchange rate daily via a background job. | US-08 | `(background job)` | - |
 | FR-13 | The system shall return the historical market price data of a specific model. | US-08 | `getPriceHistory` | - |
 
@@ -104,7 +104,10 @@ Refer to `docs/architecture/system-boundary.md` for assumptions AS-1 to AS-4.
 ## 4 External Interface Requirements
 ### 4.1 User interface
 The user interface specifications and screens map to the functional requirements defined above.
-*(Link to the Figma prototype and `docs/design/user-flows.md` from Ata will be added here).*
+- **Figma prototype (12 desktop screens):** [CollecTree – Sprint 2 Prototype](https://www.figma.com/design/kpeIcUYw4x5FKOvrRbYFaM/CollecTree-Sprint-2-Prototype?node-id=24-2)
+- **Clickable main journey:** [Login → My Collection → Add Item → Portfolio → Public Profile → Make Offer → My Offers → Conversations](https://www.figma.com/proto/kpeIcUYw4x5FKOvrRbYFaM/CollecTree-Sprint-2-Prototype?page-id=24%3A2&node-id=24-4&starting-point-node-id=24%3A4)
+- **User flows:** [`docs/design/user-flows.md`](../design/user-flows.md) has 7 flow diagrams, the on-screen messages shared by the screens and the API tests, and a table that maps every screen to its API operations.
+- Every market price is labelled "International listing price (eBay), converted to TRY", and the offer screens show the notice "Payment and delivery are handled by the users outside the platform." (BR-10).
 
 ### 4.2 API
 The backend interface is strictly defined by the OpenAPI specification contract located at `api/openapi.yaml`.
@@ -116,7 +119,7 @@ The system integrates with the eBay Browse API for international listing prices 
 Refer to the domain concepts in `docs/architecture/domain-model.md` (Section 2).
 
 ## 6 Non-functional Requirements
-*(Link to `docs/requirements/non-functional-requirements.md` from Kemal will be added here).*
+The non-functional requirements are in [`non-functional-requirements.md`](non-functional-requirements.md): 20 requirements grouped by the quality characteristics of ISO/IEC 25010 (performance efficiency, reliability, security, usability, maintainability, portability, and compatibility). Each requirement has a measurable target and a verification method. The test plan in [`docs/testing/test-plan.md`](../testing/test-plan.md) describes how each one is verified.
 
 ## 7 Traceability Matrix
 
