@@ -20,6 +20,13 @@ This document defines the overall verification and validation strategy for the *
 ### 1.2 Out of Scope
 * Third-party payment gateway settlement (CollecTree coordinates trade and cash offers without in-app financial clearing).
 * Native iOS/Android mobile applications (the first release targets desktop web browsers).
+* ### 1.3 Related documents
+* [Non-functional requirements and quality measures](../requirements/non-functional-requirements.md): the `NFR-*` IDs used in this plan
+* [Software Requirements Specification](../requirements/srs.md): the functional requirements and the user stories `US-01` to `US-10`
+* [Domain model](../architecture/domain-model.md): the business rules `BR-01` to `BR-19` (section 3)
+* [ADR-003: market price and exchange rate source](../adr/ADR-003-market-price-and-exchange-rate-source.md): the price rules
+* [OpenAPI contract](../../api/openapi.yaml): the request and response schemas and the error responses
+* [User flows](../design/user-flows.md): the on-screen messages that the API tests check
 
 ---
 
