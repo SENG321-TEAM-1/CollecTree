@@ -19,8 +19,8 @@ Sprint 2 ran from 14 November to 24 November 2026. The counts below cover the wo
 | Elif Zahide Arat | [@elifarat](https://github.com/elifarat) | Product Owner and Requirements Engineer | 3 | 2 | 2 | 8 |
 | Feyza Sayar | [@feyzasayar001](https://github.com/feyzasayar001) | Scrum Master and Agile Process Coach | 1 | @@FEYZA_N@@ | @@FEYZA_N@@ | 3 |
 | Berke Akman | [@berkeakman0](https://github.com/berkeakman0) | Lead Software Architect and Technical Lead | 11 | 10 | 10 | 8 |
-| Kemal Yusuf Ateşer | [@kemalyusufateser](https://github.com/kemalyusufateser) | Quality Assurance and Test Automation Engineer | 2 | 2 | 2 | 3 |
-| Çağrı Baynal | [@CagriBaynal](https://github.com/CagriBaynal) | DevOps and CI/CD Infrastructure Engineer | 2 | @@CAGRI_C@@ | @@CAGRI_P@@ | 4 |
+| Kemal Yusuf Ateşer | [@kemalyusufateser](https://github.com/kemalyusufateser) | Quality Assurance and Test Automation Engineer | 3 | 3 | 3 | 3 |
+| Çağrı Baynal | [@CagriBaynal](https://github.com/CagriBaynal) | DevOps and CI/CD Infrastructure Engineer | 2 | 2 | 2 | 4 |
 | Ata Eren Atlı | [@atalirr](https://github.com/atalirr) | Implementation and Integration Engineer | 2 | 2 | 2 | 3 |
 
 Berke's issue count includes #129, which he opened for Feyza's stand-up update, and his commit count includes the commit of this update (#132). Çağrı's commit count includes the release merge commit on `main`.
@@ -101,15 +101,15 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 **Work done**
 
 - Wrote the non-functional requirements and quality measures (`docs/requirements/non-functional-requirements.md`): 20 requirements grouped by the ISO/IEC 25010 quality characteristics, each with a measurable target and a verification method.
-- Wrote the test plan for Sprint 3 (`docs/testing/test-plan.md`): test levels, test environment, entry and exit criteria, the CI quality gate, and one test case for every business rule (BR-01 to BR-19) and for the ADR-003 price rule.
+- Wrote the test plan for Sprint 3 (`docs/testing/test-plan.md`): test levels, test environment, entry and exit criteria, the CI quality gate, and one test case for every business rule (BR-01 to BR-19) and for the ADR-003 price rule. Added a related documents section that links the test plan to the requirements, the domain model, ADR-003, the API contract, and the user flows.
 - Reviewed the domain model for testability and asked four questions on the business rules, which were answered and added to the domain model (BR-12, BR-14, BR-19).
 - Reviewed the architecture overview against the non-functional requirements, and reviewed the price source spike and the ADR-003 alignment.
 
-**Issues:** created and assigned [#123](https://github.com/SENG321-TEAM-1/CollecTree/issues/123), [#125](https://github.com/SENG321-TEAM-1/CollecTree/issues/125).
+**Issues:** created and assigned [#123](https://github.com/SENG321-TEAM-1/CollecTree/issues/123), [#125](https://github.com/SENG321-TEAM-1/CollecTree/issues/125), [#134](https://github.com/SENG321-TEAM-1/CollecTree/issues/134).
 
-**Pull requests:** [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124) Add the non-functional requirements and quality measures, [#126](https://github.com/SENG321-TEAM-1/CollecTree/pull/126) Add the Sprint 2 test plan.
+**Pull requests:** [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124) Add the non-functional requirements and quality measures, [#126](https://github.com/SENG321-TEAM-1/CollecTree/pull/126) Add the Sprint 2 test plan, [#135](https://github.com/SENG321-TEAM-1/CollecTree/pull/135) Link the test plan to the requirement and architecture documents.
 
-**Commits:** [`42a50ec`](https://github.com/SENG321-TEAM-1/CollecTree/commit/42a50ec5e4955938eb6dac8273f08555fd9f5ce7), [`8ee0cea`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8ee0cea47f4d927a1780bc04869815cdbccd4818).
+**Commits:** [`42a50ec`](https://github.com/SENG321-TEAM-1/CollecTree/commit/42a50ec5e4955938eb6dac8273f08555fd9f5ce7), [`8ee0cea`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8ee0cea47f4d927a1780bc04869815cdbccd4818)@@SHA135@@.
 
 **Reviews:** [#93](https://github.com/SENG321-TEAM-1/CollecTree/pull/93) (testability questions); approved [#106](https://github.com/SENG321-TEAM-1/CollecTree/pull/106), [#117](https://github.com/SENG321-TEAM-1/CollecTree/pull/117), [#128](https://github.com/SENG321-TEAM-1/CollecTree/pull/128).
 
@@ -130,7 +130,7 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 
 **Issues:** created and assigned [#114](https://github.com/SENG321-TEAM-1/CollecTree/issues/114), [#115](https://github.com/SENG321-TEAM-1/CollecTree/issues/115).
 
-**Pull requests:** [#116](https://github.com/SENG321-TEAM-1/CollecTree/pull/116) Add a CI check that renders all Mermaid diagrams@@CAGRI_PR@@.
+**Pull requests:** [#116](https://github.com/SENG321-TEAM-1/CollecTree/pull/116) Add a CI check that renders all Mermaid diagrams, [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133) Sprint 2 release: merge develop into main.
 
 **Commits:** [`38f9f67`](https://github.com/SENG321-TEAM-1/CollecTree/commit/38f9f67a13095d2668455c507d9caed040f38849)@@CAGRI_SHA@@.
 
