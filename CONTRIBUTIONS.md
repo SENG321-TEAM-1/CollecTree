@@ -132,7 +132,7 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 
 **Pull requests:** [#116](https://github.com/SENG321-TEAM-1/CollecTree/pull/116) Add a CI check that renders all Mermaid diagrams, [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133) Sprint 2 release: merge develop into main.
 
-**Commits:** [`38f9f67`](https://github.com/SENG321-TEAM-1/CollecTree/commit/38f9f67a13095d2668455c507d9caed040f38849)@@CAGRI_SHA@@.
+**Commits:** [`38f9f67`](https://github.com/SENG321-TEAM-1/CollecTree/commit/38f9f67a13095d2668455c507d9caed040f38849), and the release merge commit of [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133) on `main`.
 
 **Reviews (approved):** [#95](https://github.com/SENG321-TEAM-1/CollecTree/pull/95), [#98](https://github.com/SENG321-TEAM-1/CollecTree/pull/98), [#104](https://github.com/SENG321-TEAM-1/CollecTree/pull/104), [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124) (approved again after the update).
 
