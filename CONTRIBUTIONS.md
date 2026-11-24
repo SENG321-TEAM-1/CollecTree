@@ -10,20 +10,20 @@ Changes reach `develop` through squash-merged pull requests, so each merged pull
 
 ## Sprint 2: Requirements and Architecture
 
-Sprint 2 ran from 14 November to 24 November 2026. The counts below cover the work from the start of Sprint 2 to the `v0.2.0-sprint2` release. All Sprint 2 issues and pull requests are in the [Sprint 2 milestone](https://github.com/SENG321-TEAM-1/CollecTree/milestone/1?closed=1).
+Sprint 2 ran from 14 November to 24 November 2026. The counts below cover the work from the start of Sprint 2 to the `v0.2.0-sprint2` release. Most Sprint 2 issues and pull requests are in the [Sprint 2 milestone](https://github.com/SENG321-TEAM-1/CollecTree/milestone/1?closed=1).
 
 ### Summary
 
 | Name | GitHub | Role | Issues opened | Commits on `develop` / `main` | Pull requests merged | Pull request approvals given |
 | :--- | :--- | :--- | :---: | :---: | :---: | :---: |
-| Elif Zahide Arat | [@elifarat](https://github.com/elifarat) | Product Owner and Requirements Engineer | 3 | 2 | 2 | 8 |
-| Feyza Sayar | [@feyzasayar001](https://github.com/feyzasayar001) | Scrum Master and Agile Process Coach | 1 | @@FEYZA_N@@ | @@FEYZA_N@@ | 3 |
-| Berke Akman | [@berkeakman0](https://github.com/berkeakman0) | Lead Software Architect and Technical Lead | 11 | 10 | 10 | 8 |
+| Elif Zahide Arat | [@elifarat](https://github.com/elifarat) | Product Owner and Requirements Engineer | 3 | 2 | 2 | 11 |
+| Feyza Sayar | [@feyzasayar001](https://github.com/feyzasayar001) | Scrum Master and Agile Process Coach | 1 | 2 | 2 | 3 |
+| Berke Akman | [@berkeakman0](https://github.com/berkeakman0) | Lead Software Architect and Technical Lead | 12 | 12 | 11 | 10 |
 | Kemal Yusuf Ateşer | [@kemalyusufateser](https://github.com/kemalyusufateser) | Quality Assurance and Test Automation Engineer | 3 | 3 | 3 | 3 |
-| Çağrı Baynal | [@CagriBaynal](https://github.com/CagriBaynal) | DevOps and CI/CD Infrastructure Engineer | 2 | 2 | 2 | 4 |
+| Çağrı Baynal | [@CagriBaynal](https://github.com/CagriBaynal) | DevOps and CI/CD Infrastructure Engineer | 2 | 1 | 2 | 4 |
 | Ata Eren Atlı | [@atalirr](https://github.com/atalirr) | Implementation and Integration Engineer | 2 | 2 | 2 | 3 |
 
-Berke's issue count includes #129, which he opened for Feyza's stand-up update, and his commit count includes the commit of this update (#132). Çağrı's commit count includes the release merge commit on `main`.
+Berke's issue count includes #129, opened for Feyza's stand-up update, and Berke's commit count includes the commit of this update (#132) and the release merge commit on `main`. Çağrı opened the release pull request (#133) and Berke merged it. The approval counts include the approvals of this update and of the release pull request.
 
 ---
 
@@ -43,27 +43,26 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 
 **Commits:** [`f10a13c`](https://github.com/SENG321-TEAM-1/CollecTree/commit/f10a13c90e3154d0d098116d43f786826776a39e), [`53999bc`](https://github.com/SENG321-TEAM-1/CollecTree/commit/53999bc96699e31efa48d7ea5bd1f8c25602276d).
 
-**Reviews (approved):** [#93](https://github.com/SENG321-TEAM-1/CollecTree/pull/93), [#98](https://github.com/SENG321-TEAM-1/CollecTree/pull/98), [#100](https://github.com/SENG321-TEAM-1/CollecTree/pull/100), [#102](https://github.com/SENG321-TEAM-1/CollecTree/pull/102), [#104](https://github.com/SENG321-TEAM-1/CollecTree/pull/104), [#106](https://github.com/SENG321-TEAM-1/CollecTree/pull/106), [#117](https://github.com/SENG321-TEAM-1/CollecTree/pull/117), [#128](https://github.com/SENG321-TEAM-1/CollecTree/pull/128).
+**Reviews (approved):** [#93](https://github.com/SENG321-TEAM-1/CollecTree/pull/93), [#98](https://github.com/SENG321-TEAM-1/CollecTree/pull/98), [#100](https://github.com/SENG321-TEAM-1/CollecTree/pull/100), [#102](https://github.com/SENG321-TEAM-1/CollecTree/pull/102), [#104](https://github.com/SENG321-TEAM-1/CollecTree/pull/104), [#106](https://github.com/SENG321-TEAM-1/CollecTree/pull/106), [#117](https://github.com/SENG321-TEAM-1/CollecTree/pull/117), [#128](https://github.com/SENG321-TEAM-1/CollecTree/pull/128), [#132](https://github.com/SENG321-TEAM-1/CollecTree/pull/132), [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133), [#137](https://github.com/SENG321-TEAM-1/CollecTree/pull/137).
 
 ---
 
 ### Feyza Sayar
 
-- **Responsibilities:** Sprint 2 milestone and board, process records (planning, stand-ups, impediments, review and retrospective, RACI), and the Sprint 2 submission document (RACI row "Process records and submission": Accountable).
+- **Responsibilities:** Sprint 2 milestone and board, process records (planning, stand-ups, impediments, RACI) (RACI row "Process records": Accountable).
 
 **Work done**
 
 - Created the Sprint 2 milestone and the "Sprint 2" board view, and renamed the board column to "To Do".
-- Wrote the Sprint 2 process records (`docs/process/sprint-2.md`): the Sprint 1 retrospective actions, the Sprint 2 planning, the stand-up log, the impediment log, the review and retrospective, and the Sprint 2 RACI, and linked them from the README.
+- Wrote the Sprint 2 process records (`docs/process/sprint-2.md`): the Sprint 1 retrospective actions, the Sprint 2 planning, the stand-up log, the impediment log, and the Sprint 2 RACI, and linked them from the README.
 - Kept the daily stand-up log and the impediment log (IMP-01 to IMP-05).
-- Prepared the Sprint 2 submission document.
 - Reviewed and approved the backlog update, the SRS, and the non-functional requirements as code owner of the requirements documents.
 
-**Issues:** created and assigned [#113](https://github.com/SENG321-TEAM-1/CollecTree/issues/113); assigned to [#129](https://github.com/SENG321-TEAM-1/CollecTree/issues/129)@@FEYZA_ISSUE@@.
+**Issues:** created and assigned [#113](https://github.com/SENG321-TEAM-1/CollecTree/issues/113); assigned to [#129](https://github.com/SENG321-TEAM-1/CollecTree/issues/129).
 
-**Pull requests:** [#118](https://github.com/SENG321-TEAM-1/CollecTree/pull/118) Add the Sprint 2 process records (replaces [#112](https://github.com/SENG321-TEAM-1/CollecTree/pull/112), closed after the branch rename), [#130](https://github.com/SENG321-TEAM-1/CollecTree/pull/130) Add the stand-ups and impediments of 14–19 November@@FEYZA_PR@@.
+**Pull requests:** [#118](https://github.com/SENG321-TEAM-1/CollecTree/pull/118) Add the Sprint 2 process records (replaces [#112](https://github.com/SENG321-TEAM-1/CollecTree/pull/112), closed after the branch rename), [#130](https://github.com/SENG321-TEAM-1/CollecTree/pull/130) Add the stand-ups and impediments of 14–19 November.
 
-**Commits:** [`bb389dd`](https://github.com/SENG321-TEAM-1/CollecTree/commit/bb389dd6b6f889fbd2a00c2545af6c762268e933), [`544a7c0`](https://github.com/SENG321-TEAM-1/CollecTree/commit/544a7c0d3fde304eaa2014d8a4a6a5c23e7d8468)@@FEYZA_SHA@@.
+**Commits:** [`bb389dd`](https://github.com/SENG321-TEAM-1/CollecTree/commit/bb389dd6b6f889fbd2a00c2545af6c762268e933), [`544a7c0`](https://github.com/SENG321-TEAM-1/CollecTree/commit/544a7c0d3fde304eaa2014d8a4a6a5c23e7d8468).
 
 **Reviews (approved):** [#109](https://github.com/SENG321-TEAM-1/CollecTree/pull/109), [#111](https://github.com/SENG321-TEAM-1/CollecTree/pull/111), [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124).
 
@@ -82,15 +81,16 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 - Wrote the architecture overview (`docs/architecture/README.md`): views, key decisions, quality tactics, and risks.
 - Added `.gitignore` and `.env.example` before any API key was used.
 - Re-tested all 40 seed catalogue keywords with the spike script during the review of #122.
+- Completed the process records with the stand-ups of 20–24 November and the Sprint 2 review and retrospective (#137), merged and published the [`v0.2.0-sprint2` release](https://github.com/SENG321-TEAM-1/CollecTree/releases/tag/v0.2.0-sprint2), and prepared the Sprint 2 submission.
 - Wrote this Sprint 2 section of `CONTRIBUTIONS.md` from the GitHub records.
 
-**Issues:** created and assigned [#92](https://github.com/SENG321-TEAM-1/CollecTree/issues/92), [#94](https://github.com/SENG321-TEAM-1/CollecTree/issues/94), [#96](https://github.com/SENG321-TEAM-1/CollecTree/issues/96), [#97](https://github.com/SENG321-TEAM-1/CollecTree/issues/97), [#99](https://github.com/SENG321-TEAM-1/CollecTree/issues/99), [#101](https://github.com/SENG321-TEAM-1/CollecTree/issues/101), [#103](https://github.com/SENG321-TEAM-1/CollecTree/issues/103), [#105](https://github.com/SENG321-TEAM-1/CollecTree/issues/105), [#127](https://github.com/SENG321-TEAM-1/CollecTree/issues/127), [#131](https://github.com/SENG321-TEAM-1/CollecTree/issues/131); created [#129](https://github.com/SENG321-TEAM-1/CollecTree/issues/129) for Feyza.
+**Issues:** created and assigned [#92](https://github.com/SENG321-TEAM-1/CollecTree/issues/92), [#94](https://github.com/SENG321-TEAM-1/CollecTree/issues/94), [#96](https://github.com/SENG321-TEAM-1/CollecTree/issues/96), [#97](https://github.com/SENG321-TEAM-1/CollecTree/issues/97), [#99](https://github.com/SENG321-TEAM-1/CollecTree/issues/99), [#101](https://github.com/SENG321-TEAM-1/CollecTree/issues/101), [#103](https://github.com/SENG321-TEAM-1/CollecTree/issues/103), [#105](https://github.com/SENG321-TEAM-1/CollecTree/issues/105), [#127](https://github.com/SENG321-TEAM-1/CollecTree/issues/127), [#131](https://github.com/SENG321-TEAM-1/CollecTree/issues/131); created [#129](https://github.com/SENG321-TEAM-1/CollecTree/issues/129) for Feyza, [#136](https://github.com/SENG321-TEAM-1/CollecTree/issues/136).
 
-**Pull requests:** [#93](https://github.com/SENG321-TEAM-1/CollecTree/pull/93) Add the domain model and database schema, [#95](https://github.com/SENG321-TEAM-1/CollecTree/pull/95) Add .gitignore and .env.example, [#98](https://github.com/SENG321-TEAM-1/CollecTree/pull/98) Add the C4 model, [#100](https://github.com/SENG321-TEAM-1/CollecTree/pull/100) Add the UML sequence diagrams, [#102](https://github.com/SENG321-TEAM-1/CollecTree/pull/102) Add ADR-003 and align the system boundary with it, [#104](https://github.com/SENG321-TEAM-1/CollecTree/pull/104) Add the UML deployment diagram and operating guide, [#106](https://github.com/SENG321-TEAM-1/CollecTree/pull/106) Add the architecture overview document, [#117](https://github.com/SENG321-TEAM-1/CollecTree/pull/117) Add the price source spike results, [#128](https://github.com/SENG321-TEAM-1/CollecTree/pull/128) Accept ADR-003 and align the architecture documents and the API with it, [#132](https://github.com/SENG321-TEAM-1/CollecTree/pull/132) Add the Sprint 2 contributions to CONTRIBUTIONS.md.
+**Pull requests:** [#93](https://github.com/SENG321-TEAM-1/CollecTree/pull/93) Add the domain model and database schema, [#95](https://github.com/SENG321-TEAM-1/CollecTree/pull/95) Add .gitignore and .env.example, [#98](https://github.com/SENG321-TEAM-1/CollecTree/pull/98) Add the C4 model, [#100](https://github.com/SENG321-TEAM-1/CollecTree/pull/100) Add the UML sequence diagrams, [#102](https://github.com/SENG321-TEAM-1/CollecTree/pull/102) Add ADR-003 and align the system boundary with it, [#104](https://github.com/SENG321-TEAM-1/CollecTree/pull/104) Add the UML deployment diagram and operating guide, [#106](https://github.com/SENG321-TEAM-1/CollecTree/pull/106) Add the architecture overview document, [#117](https://github.com/SENG321-TEAM-1/CollecTree/pull/117) Add the price source spike results, [#128](https://github.com/SENG321-TEAM-1/CollecTree/pull/128) Accept ADR-003 and align the architecture documents and the API with it, [#137](https://github.com/SENG321-TEAM-1/CollecTree/pull/137) Add the stand-ups of 20–24 November and the Sprint 2 review and retrospective, [#132](https://github.com/SENG321-TEAM-1/CollecTree/pull/132) Add the Sprint 2 contributions to CONTRIBUTIONS.md.
 
-**Commits:** [`d20069b`](https://github.com/SENG321-TEAM-1/CollecTree/commit/d20069b34bca7a1c49bf227a98056f7a6a74373b), [`adac26e`](https://github.com/SENG321-TEAM-1/CollecTree/commit/adac26e5e9da924c796bdfcb65d0088fcc743f2e), [`8e6c9f1`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8e6c9f1f92d86e74c9bbd7f55a0e82a19fabfb64), [`8d91bf9`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8d91bf9f5a32b2fe438234ef8e37cfae5ee392aa), [`0e4bd8b`](https://github.com/SENG321-TEAM-1/CollecTree/commit/0e4bd8b27607d2b4db54703fdd73a71f95467354), [`5d175fc`](https://github.com/SENG321-TEAM-1/CollecTree/commit/5d175fc2df0266fcd606b42685b75086a694a8c5), [`661f284`](https://github.com/SENG321-TEAM-1/CollecTree/commit/661f2844e0de6aa9759f53c606faf67730aa1a5b), [`5f65843`](https://github.com/SENG321-TEAM-1/CollecTree/commit/5f658435d67aab990fbec0a357259897bb0e2b75), [`d66f688`](https://github.com/SENG321-TEAM-1/CollecTree/commit/d66f68882cbec1e65e97b3f873775f4a4ef5300f).
+**Commits:** [`d20069b`](https://github.com/SENG321-TEAM-1/CollecTree/commit/d20069b34bca7a1c49bf227a98056f7a6a74373b), [`adac26e`](https://github.com/SENG321-TEAM-1/CollecTree/commit/adac26e5e9da924c796bdfcb65d0088fcc743f2e), [`8e6c9f1`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8e6c9f1f92d86e74c9bbd7f55a0e82a19fabfb64), [`8d91bf9`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8d91bf9f5a32b2fe438234ef8e37cfae5ee392aa), [`0e4bd8b`](https://github.com/SENG321-TEAM-1/CollecTree/commit/0e4bd8b27607d2b4db54703fdd73a71f95467354), [`5d175fc`](https://github.com/SENG321-TEAM-1/CollecTree/commit/5d175fc2df0266fcd606b42685b75086a694a8c5), [`661f284`](https://github.com/SENG321-TEAM-1/CollecTree/commit/661f2844e0de6aa9759f53c606faf67730aa1a5b), [`5f65843`](https://github.com/SENG321-TEAM-1/CollecTree/commit/5f658435d67aab990fbec0a357259897bb0e2b75), [`d66f688`](https://github.com/SENG321-TEAM-1/CollecTree/commit/d66f68882cbec1e65e97b3f873775f4a4ef5300f), and the commits of [#137](https://github.com/SENG321-TEAM-1/CollecTree/pull/137), [#132](https://github.com/SENG321-TEAM-1/CollecTree/pull/132), and the release merge of [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133) on `main`.
 
-**Reviews (approved):** [#111](https://github.com/SENG321-TEAM-1/CollecTree/pull/111), [#116](https://github.com/SENG321-TEAM-1/CollecTree/pull/116), [#118](https://github.com/SENG321-TEAM-1/CollecTree/pull/118), [#120](https://github.com/SENG321-TEAM-1/CollecTree/pull/120), [#122](https://github.com/SENG321-TEAM-1/CollecTree/pull/122) (after requesting changes first), [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124), [#126](https://github.com/SENG321-TEAM-1/CollecTree/pull/126) (after requesting changes first), [#130](https://github.com/SENG321-TEAM-1/CollecTree/pull/130).
+**Reviews (approved):** [#111](https://github.com/SENG321-TEAM-1/CollecTree/pull/111), [#116](https://github.com/SENG321-TEAM-1/CollecTree/pull/116), [#118](https://github.com/SENG321-TEAM-1/CollecTree/pull/118), [#120](https://github.com/SENG321-TEAM-1/CollecTree/pull/120), [#122](https://github.com/SENG321-TEAM-1/CollecTree/pull/122) (after requesting changes first), [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124), [#126](https://github.com/SENG321-TEAM-1/CollecTree/pull/126) (after requesting changes first), [#130](https://github.com/SENG321-TEAM-1/CollecTree/pull/130), [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133), [#135](https://github.com/SENG321-TEAM-1/CollecTree/pull/135).
 
 ---
 
@@ -109,7 +109,7 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 
 **Pull requests:** [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124) Add the non-functional requirements and quality measures, [#126](https://github.com/SENG321-TEAM-1/CollecTree/pull/126) Add the Sprint 2 test plan, [#135](https://github.com/SENG321-TEAM-1/CollecTree/pull/135) Link the test plan to the requirement and architecture documents.
 
-**Commits:** [`42a50ec`](https://github.com/SENG321-TEAM-1/CollecTree/commit/42a50ec5e4955938eb6dac8273f08555fd9f5ce7), [`8ee0cea`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8ee0cea47f4d927a1780bc04869815cdbccd4818)@@SHA135@@.
+**Commits:** [`42a50ec`](https://github.com/SENG321-TEAM-1/CollecTree/commit/42a50ec5e4955938eb6dac8273f08555fd9f5ce7), [`8ee0cea`](https://github.com/SENG321-TEAM-1/CollecTree/commit/8ee0cea47f4d927a1780bc04869815cdbccd4818), [`a765c44`](https://github.com/SENG321-TEAM-1/CollecTree/commit/a765c4480c8c6d00fd3957f3fc75841e218c5e70).
 
 **Reviews:** [#93](https://github.com/SENG321-TEAM-1/CollecTree/pull/93) (testability questions); approved [#106](https://github.com/SENG321-TEAM-1/CollecTree/pull/106), [#117](https://github.com/SENG321-TEAM-1/CollecTree/pull/117), [#128](https://github.com/SENG321-TEAM-1/CollecTree/pull/128).
 
@@ -117,7 +117,7 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 
 ### Çağrı Baynal
 
-- **Responsibilities:** Docker Compose deployment decisions, the CI checks, repository security, and the Sprint 2 release (RACI row "CI and repository security": Accountable).
+- **Responsibilities:** Docker Compose deployment decisions, the CI checks, repository security, and the Sprint 2 release pull request (RACI row "CI and repository security": Accountable).
 
 **Work done**
 
@@ -125,14 +125,14 @@ Berke's issue count includes #129, which he opened for Feyza's stand-up update, 
 - Added the `render-mermaid` CI check (`.github/workflows/check-docs.yml`), which renders every Mermaid diagram on every pull request, and made it a required check next to `validate-openapi`.
 - Checked that secret scanning and push protection are enabled before the eBay keys were used.
 - Re-reviewed the non-functional requirements after the update and checked them against the deployment decisions and the CI checks.
-- Opened and merged the release pull request from `develop` to `main` and published the [`v0.2.0-sprint2` release](https://github.com/SENG321-TEAM-1/CollecTree/releases/tag/v0.2.0-sprint2).
+- Opened the Sprint 2 release pull request from `develop` to `main` (#133).
 - Reviewed the `.gitignore`, the C4 model, the deployment diagram, and the non-functional requirements.
 
 **Issues:** created and assigned [#114](https://github.com/SENG321-TEAM-1/CollecTree/issues/114), [#115](https://github.com/SENG321-TEAM-1/CollecTree/issues/115).
 
 **Pull requests:** [#116](https://github.com/SENG321-TEAM-1/CollecTree/pull/116) Add a CI check that renders all Mermaid diagrams, [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133) Sprint 2 release: merge develop into main.
 
-**Commits:** [`38f9f67`](https://github.com/SENG321-TEAM-1/CollecTree/commit/38f9f67a13095d2668455c507d9caed040f38849), and the release merge commit of [#133](https://github.com/SENG321-TEAM-1/CollecTree/pull/133) on `main`.
+**Commits:** [`38f9f67`](https://github.com/SENG321-TEAM-1/CollecTree/commit/38f9f67a13095d2668455c507d9caed040f38849).
 
 **Reviews (approved):** [#95](https://github.com/SENG321-TEAM-1/CollecTree/pull/95), [#98](https://github.com/SENG321-TEAM-1/CollecTree/pull/98), [#104](https://github.com/SENG321-TEAM-1/CollecTree/pull/104), [#124](https://github.com/SENG321-TEAM-1/CollecTree/pull/124) (approved again after the update).
 
