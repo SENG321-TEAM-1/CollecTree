@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 900" width="1440" height="900">
+  <rect width="1440" height="900" fill="#F8FAFC"/>
+  <rect x="0" y="0" width="1440" height="64" fill="#0F172A"/>
+  <rect x="32" y="16" width="32" height="32" rx="8" fill="#2563EB"/>
+  <text x="48" y="38" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">CT</text>
+  <text x="76" y="38" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="18" font-weight="700" fill="#FFFFFF">CollecTree</text>
+  <g id="Frame/RegisterCard">
+    <rect x="460" y="110" width="520" height="680" rx="16" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="1.5"/>
+    <text x="720" y="166" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="26" font-weight="700" fill="#0F172A">Create your collector account</text>
+    <text x="720" y="194" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#64748B">Start tracking your 1:64 and 1:18 diecast models</text>
+    <rect x="508" y="218" width="424" height="48" rx="8" fill="#FEE2E2" stroke="#FCA5A5"/>
+    <text x="524" y="247" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#B91C1C">409 Conflict (BR-01): This username or email is already registered.</text>
+    <text x="508" y="298" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">Username (3–30 characters, unique)</text>
+    <rect x="508" y="308" width="424" height="44" rx="8" fill="#FFFFFF" stroke="#DC2626" stroke-width="1.5"/>
+    <text x="524" y="335" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">ata_minigt</text>
+    <text x="508" y="370" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" fill="#64748B">Letters, digits, and underscores only.</text>
+    <text x="508" y="408" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">Email address</text>
+    <rect x="508" y="418" width="424" height="44" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <text x="524" y="445" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">ata@collectree.dev</text>
+    <text x="508" y="498" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="13" font-weight="600" fill="#334155">Password (minimum 8 characters)</text>
+    <rect x="508" y="508" width="424" height="44" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+    <text x="524" y="535" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#0F172A">••••••••••••</text>
+    <g id="Button/Primary">
+      <rect x="508" y="582" width="424" height="48" rx="8" fill="#2563EB" stroke="#2563EB" stroke-width="1.5"/>
+      <text x="720" y="611" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" font-weight="600" fill="#FFFFFF">Create account</text>
+    </g>
+    <line x1="508" y1="660" x2="932" y2="660" stroke="#E2E8F0"/>
+    <text x="720" y="698" text-anchor="middle" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="14" fill="#475569">Already registered? <tspan fill="#2563EB" font-weight="600">Log in</tspan></text>
+  </g>
+  <g id="Footer/Meta">
+    <rect x="0" y="864" width="1440" height="36" fill="#F1F5F9" stroke="#E2E8F0"/>
+    <text x="32" y="887" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="600" fill="#475569">CollecTree – Sprint 2 Prototype  |  Screen: Register</text>
+    <text x="1408" y="887" text-anchor="end" font-family="Inter, Segoe UI, Arial, sans-serif" font-size="12" font-weight="500" fill="#64748B">API: POST /api/v1/auth/register [register]</text>
+  </g>
+</svg>

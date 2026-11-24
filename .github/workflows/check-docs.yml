@@ -1,0 +1,43 @@
+name: Check docs
+
+on:
+  pull_request:
+    branches: [main, develop]
+  push:
+    branches: [main, develop]
+
+jobs:
+  render-mermaid:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Mermaid CLI
+        run: npm install -g @mermaid-js/mermaid-cli
+
+      - name: Render every Mermaid diagram
+        run: |
+          echo '{"args": ["--no-sandbox"]}' > /tmp/puppeteer.json
+          mkdir -p /tmp/rendered
+          status=0
+          for f in $(grep -rl '```mermaid' docs README.md || true); do
+            name=$(echo "$f" | tr '/' '_' | sed 's/\.md$//')
+            if mmdc -q -p /tmp/puppeteer.json -i "$f" -o "/tmp/rendered/$name.md" -e svg; then
+              echo "OK   $f"
+            else
+              echo "::error file=$f::A Mermaid diagram in this file does not render"
+              status=1
+            fi
+          done
+          exit $status
+
+      - name: Upload the rendered diagrams
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rendered-diagrams
+          path: /tmp/rendered

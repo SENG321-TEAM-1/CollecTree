@@ -1,9 +1,9 @@
 openapi: 3.1.0
 info:
   title: CollecTree API
-  version: 0.1.0
+  version: 0.2.0
   description: |
-    Draft API contract for Sprint 1.
+    API contract, Sprint 2 draft. Data model and business rules: docs/architecture/domain-model.md.
     All prices are in Turkish lira (TRY).
     The platform does not process payments; cash amounts in offers are only information.
 
@@ -22,8 +22,37 @@ tags:
   - name: Pricing
   - name: Messaging
   - name: Offers
+  - name: System
 
 paths:
+  # ---------------------------------------------------------------- System
+  /health:
+    get:
+      tags: [System]
+      operationId: getHealth
+      summary: Check that the API and the database are reachable
+      description: Used by the Docker Compose health check of the backend container (docs/architecture/deployment.md).
+      security: []
+      responses:
+        '200':
+          description: The API is running and the database answers
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: { type: string, enum: [ok], example: ok }
+        '503':
+          description: The database is not reachable
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+              example:
+                title: Service unavailable
+                status: 503
+                code: DATABASE_UNAVAILABLE
+
   # ---------------------------------------------------------------- Auth
   /auth/register:
     post:
@@ -113,14 +142,18 @@ paths:
         - $ref: '#/components/parameters/Brand'
         - $ref: '#/components/parameters/Scale'
         - $ref: '#/components/parameters/Series'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
       responses:
         '200':
-          description: Matching models
+          description: One page of matching models, ordered by brand and name
           content:
             application/json:
               schema:
                 type: array
+                maxItems: 50
                 items: { $ref: '#/components/schemas/DiecastModel' }
+        '400': { $ref: '#/components/responses/BadRequest' }
 
   # ---------------------------------------------------------------- Pricing
   /models/{modelId}/prices:
@@ -193,14 +226,18 @@ paths:
         - $ref: '#/components/parameters/Brand'
         - $ref: '#/components/parameters/Scale'
         - $ref: '#/components/parameters/Series'
+        - $ref: '#/components/parameters/Limit'
+        - $ref: '#/components/parameters/Offset'
       responses:
         '200':
-          description: Collection items
+          description: One page of collection items, newest first
           content:
             application/json:
               schema:
                 type: array
+                maxItems: 50
                 items: { $ref: '#/components/schemas/CollectionItem' }
+        '400': { $ref: '#/components/responses/BadRequest' }
         '404': { $ref: '#/components/responses/NotFound' }
 
   /items:
@@ -229,6 +266,49 @@ paths:
         '404': { $ref: '#/components/responses/NotFound' }
 
   /items/{itemId}:
+    patch:
+      tags: [Collection]
+      operationId: updateItem
+      summary: Change the purchase details or trade status of my item
+      description: |
+        Only the owner can change an item. Send only the fields to change.
+        The model of an item cannot be changed; remove the item and add a new one instead.
+        An item cannot be closed for trade while it is the target of a PENDING offer.
+      parameters:
+        - $ref: '#/components/parameters/ItemId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/UpdateCollectionItem' }
+            examples:
+              openForTrade:
+                summary: Open the item for trade
+                value:
+                  openForTrade: true
+              fixPrice:
+                summary: Correct the purchase price
+                value:
+                  purchasePrice: 420.00
+      responses:
+        '200':
+          description: Item updated
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/CollectionItem' }
+        '400': { $ref: '#/components/responses/BadRequest' }
+        '401': { $ref: '#/components/responses/Unauthorized' }
+        '403': { $ref: '#/components/responses/Forbidden' }
+        '404': { $ref: '#/components/responses/NotFound' }
+        '409':
+          description: The item is the target of a pending offer and cannot be closed for trade
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+              example:
+                title: Item has pending offers
+                status: 409
+                code: ITEM_HAS_PENDING_OFFERS
     delete:
       tags: [Collection]
       operationId: deleteItem
@@ -281,6 +361,16 @@ paths:
           content:
             application/json:
               schema: { $ref: '#/components/schemas/Conversation' }
+        '400':
+          description: Invalid input, or the username is the current user (BR-12)
+          content:
+            application/problem+json:
+              schema: { $ref: '#/components/schemas/Problem' }
+              example:
+                title: Invalid conversation
+                status: 400
+                detail: You cannot start a conversation with yourself.
+                code: VALIDATION_ERROR
         '401': { $ref: '#/components/responses/Unauthorized' }
         '404': { $ref: '#/components/responses/NotFound' }
         '409':
@@ -403,6 +493,9 @@ paths:
         Only a PENDING offer can be changed.
         The receiver can set ACCEPTED or REJECTED. The sender can set WITHDRAWN.
         Accepting does not move items or money. The two users complete the exchange themselves.
+        When an offer is accepted, every other PENDING offer that contains any of its items
+        (as target or as offered item) becomes CANCELLED, and all items of the accepted offer
+        are closed for trade.
       parameters:
         - $ref: '#/components/parameters/OfferId'
       requestBody:
@@ -481,6 +574,16 @@ components:
       name: series
       in: query
       schema: { type: string, example: Super Treasure Hunt }
+    Limit:
+      name: limit
+      in: query
+      description: Page size. At most 50, so that prices cannot be downloaded in bulk (ADR-003, decision 6).
+      schema: { type: integer, minimum: 1, maximum: 50, default: 20 }
+    Offset:
+      name: offset
+      in: query
+      description: Number of entries to skip
+      schema: { type: integer, minimum: 0, default: 0 }
 
   responses:
     BadRequest:
@@ -573,6 +676,15 @@ components:
         purchaseDate: { type: string, format: date }
         openForTrade: { type: boolean, default: false }
 
+    UpdateCollectionItem:
+      type: object
+      minProperties: 1
+      additionalProperties: false
+      properties:
+        purchasePrice: { type: number, minimum: 0 }
+        purchaseDate: { type: string, format: date }
+        openForTrade: { type: boolean }
+
     CollectionItem:
       type: object
       required: [id, owner, model, openForTrade]
@@ -660,5 +772,8 @@ components:
             receiver: { type: string }
             status:
               type: string
-              enum: [PENDING, ACCEPTED, REJECTED, WITHDRAWN]
+              enum: [PENDING, ACCEPTED, REJECTED, WITHDRAWN, CANCELLED]
+              description: |
+                CANCELLED is set by the system when another offer with the same item is accepted.
+                Users cannot set it.
             createdAt: { type: string, format: date-time }
